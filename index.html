@@ -370,6 +370,15 @@
       .cta-final .btn-lg { width: 100%; }
     }
 
+    /* ---------- AVISO DE COMPRA RECIENTE ---------- */
+    .buy-toast { position: fixed; top: 72px; left: 1rem; z-index: 49; max-width: 340px; display: flex; align-items: center; gap: .75rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: .5rem 1rem .5rem .5rem; box-shadow: var(--shadow-card); font-size: .85rem; line-height: 1.3; opacity: 0; transform: translateY(-12px); pointer-events: none; transition: opacity .35s ease, transform .35s ease; }
+    .buy-toast.show { opacity: 1; transform: none; pointer-events: auto; }
+    .buy-toast .av { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background-image: var(--gradient-cta); color: #fff; font-weight: 800; font-size: .95rem; flex-shrink: 0; }
+    .buy-toast b { color: var(--cocoa); }
+    .buy-toast small { display: block; color: var(--muted-fg); font-weight: 700; font-size: .75rem; }
+    .buy-toast .x { border: 0; background: none; color: var(--muted-fg); font-size: 1.1rem; cursor: pointer; padding: 0 .1rem; line-height: 1; }
+    @media (max-width: 899px) { .buy-toast { top: 64px; left: .75rem; right: .75rem; max-width: none; } }
+
     /* ---------- FOCO / ACCESIBILIDAD ---------- */
     :focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; border-radius: 6px; }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -397,6 +406,13 @@
       <a class="btn btn-primary" href="#oferta">Quiero el kit</a>
     </div>
   </header>
+
+  <!-- Aviso de compra reciente (se muestra debajo del header cada cierto tiempo) -->
+  <div class="buy-toast" id="buyToast" role="status" aria-live="polite">
+    <div class="av" id="buyAv"></div>
+    <div><b id="buyName"></b> compró el Kit Completo<small id="buyWhen"></small></div>
+    <button class="x" type="button" id="buyClose" aria-label="Cerrar">×</button>
+  </div>
 
   <!-- ===================== HERO ===================== -->
   <section class="hero bg-hero">
@@ -816,6 +832,40 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---- Aviso de compra reciente ----
+    // IMPORTANTE: cargar acá compras REALES (nombre de pila + ciudad). Mostrar compras
+    // inventadas es publicidad engañosa (Ley 24.240). Podés borrar entradas o agregar más.
+    const COMPRAS = [
+      { nombre: 'Florencia', ciudad: 'Córdoba' },
+      { nombre: 'Lucía', ciudad: 'Rosario' },
+      { nombre: 'Martín', ciudad: 'CABA' },
+      { nombre: 'Camila', ciudad: 'Mendoza' },
+      { nombre: 'Sofía', ciudad: 'La Plata' },
+      { nombre: 'Valentina', ciudad: 'Tucumán' },
+      { nombre: 'Agustina', ciudad: 'Mar del Plata' },
+      { nombre: 'Julieta', ciudad: 'Salta' },
+    ];
+    const TOAST = { primero: 8000, visible: 5500, cadaMin: 25000, cadaMax: 45000 };
+
+    (function () {
+      const el = document.getElementById('buyToast');
+      if (!el || !COMPRAS.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      let i = Math.floor(Math.random() * COMPRAS.length), hideT, nextT, cerrado = false;
+      const rand = (a, b) => a + Math.random() * (b - a);
+      const mostrar = () => {
+        if (cerrado) return;
+        const c = COMPRAS[i++ % COMPRAS.length];
+        const min = Math.round(rand(2, 40));
+        document.getElementById('buyAv').textContent = c.nombre[0];
+        document.getElementById('buyName').textContent = `${c.nombre} de ${c.ciudad}`;
+        document.getElementById('buyWhen').textContent = `hace ${min} min`;
+        el.classList.add('show');
+        hideT = setTimeout(() => { el.classList.remove('show'); nextT = setTimeout(mostrar, rand(TOAST.cadaMin, TOAST.cadaMax)); }, TOAST.visible);
+      };
+      document.getElementById('buyClose').addEventListener('click', () => { cerrado = true; clearTimeout(hideT); clearTimeout(nextT); el.classList.remove('show'); });
+      nextT = setTimeout(mostrar, TOAST.primero);
+    })();
 
     // Animación de entrada al hacer scroll
     const io = new IntersectionObserver((entries) => {
