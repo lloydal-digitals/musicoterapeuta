@@ -211,6 +211,17 @@
     .testimonials p { margin-top: .4rem; font-weight: 600; }
     .testimonials small { display: block; margin-top: .5rem; color: var(--muted-fg); font-weight: 700; }
 
+    /* ---------- VOCES (testimonios con foto) ---------- */
+    .voces { display: grid; gap: 1.5rem; max-width: 960px; margin: 0 auto; }
+    @media (min-width: 768px) { .voces { grid-template-columns: 1fr 1fr; } }
+    .voz { display: grid; grid-template-columns: 112px 1fr; gap: 1.25rem; align-items: start; padding: 1.5rem; }
+    .voz img { width: 112px; height: 112px; object-fit: cover; border-radius: 50%; border: 4px solid var(--card); box-shadow: var(--shadow-card); }
+    .voz .stars { color: var(--honey); letter-spacing: .1em; font-size: .9rem; }
+    .voz blockquote { margin: .5rem 0 0; font-family: var(--font-display); font-style: italic; font-size: 1.15rem; line-height: 1.45; }
+    .voz cite { display: block; margin-top: .75rem; font-style: normal; font-weight: 800; }
+    .voz cite small { display: block; color: var(--muted-fg); font-weight: 600; }
+    @media (max-width: 767px) { .voz { grid-template-columns: 80px 1fr; padding: 1.25rem; } .voz img { width: 80px; height: 80px; } }
+
     /* ---------- PASOS ---------- */
     .step { text-align: center; padding: 2rem 1.5rem; }
     .step .num { width: 64px; height: 64px; margin: 0 auto; border-radius: 50%; display: grid; place-items: center; background-image: var(--gradient-cta); color: #fff; font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; box-shadow: var(--shadow-warm); }
@@ -588,12 +599,12 @@
       <div class="carousel reveal">
         <button class="carousel-btn prev" type="button" aria-label="Anterior">‹</button>
         <div class="gallery" id="gallery">
-          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-1.webp?v=1789916584" alt="Página de muestra 1 del kit" width="800" height="600" loading="lazy" /></div>
-          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-2.webp?v=1789916584" alt="Página de muestra 2 del kit" width="800" height="600" loading="lazy" /></div>
-          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-3.webp?v=1789916584" alt="Página de muestra 3 del kit" width="800" height="600" loading="lazy" /></div>
-          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-4.webp?v=1789916584" alt="Página de muestra 4 del kit" width="800" height="600" loading="lazy" /></div>
-          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-5.webp?v=1789916584" alt="Página de muestra 5 del kit" width="800" height="600" loading="lazy" /></div>
-          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-6.webp?v=1789916584" alt="Página de muestra 6 del kit" width="800" height="600" loading="lazy" /></div>
+          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-1.webp?v=1789916584" alt="Actividad «La lluvia que llega»: ficha y paso a paso" width="1600" height="1200" loading="lazy" /></div>
+          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-2.webp?v=1789916584" alt="Tarjetas musicales: instrumentos y emociones para recortar" width="1600" height="1200" loading="lazy" /></div>
+          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-3.webp?v=1789916584" alt="Partituras ilustradas de las canciones originales" width="1600" height="1200" loading="lazy" /></div>
+          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-4.webp?v=1789916584" alt="Eje Emociones y vínculo: separador y actividad" width="1600" height="1200" loading="lazy" /></div>
+          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-5.webp?v=1789916584" alt="Fichas de ritmo: vagones y patrones para imprimir" width="1600" height="1200" loading="lazy" /></div>
+          <div><img class="pic" src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/pagina-6.webp?v=1789916584" alt="Calendario musical anual y juego del semáforo" width="1600" height="1200" loading="lazy" /></div>
         </div>
         <button class="carousel-btn next" type="button" aria-label="Siguiente">›</button>
         <div class="dots" id="dots" aria-hidden="true"></div>
@@ -619,6 +630,40 @@
       </div>
     </div>
   </section>
+
+  <!-- ===================== VOCES =====================
+       DESACTIVADA hasta tener testimonios reales. Para activarla:
+       1) reemplazá los textos entre [corchetes] por la frase, el nombre y el rol REALES de cada persona
+          (con su permiso para usar la foto y la frase);
+       2) borrá esta línea de apertura de comentario y la de cierre marcada abajo.
+       Inventar testimonios es publicidad engañosa (Ley 24.240 art. 8 y Lealtad Comercial).
+  <section class="bg-cream">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Lo que dicen</span>
+        <h2>Voces de quienes <span class="hl">ya lo usan</span></h2>
+      </div>
+      <div class="voces">
+        <article class="card voz reveal">
+          <img src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/clienta1.webp?v=1789916584" alt="[Nombre], [rol]" width="800" height="800" loading="lazy" />
+          <div>
+            <div class="stars">★★★★★</div>
+            <blockquote>“[Frase textual de la persona, en sus palabras.]”</blockquote>
+            <cite>[Nombre]<small>[Rol · ciudad]</small></cite>
+          </div>
+        </article>
+        <article class="card voz reveal">
+          <img src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/clienta2.webp?v=1789916584" alt="[Nombre], [rol]" width="800" height="800" loading="lazy" />
+          <div>
+            <div class="stars">★★★★★</div>
+            <blockquote>“[Frase textual de la persona, en sus palabras.]”</blockquote>
+            <cite>[Nombre]<small>[Rol · ciudad]</small></cite>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  fin VOCES (cierre del comentario) -->
 
   <!-- ===================== PASOS ===================== -->
   <section class="bg-cream">

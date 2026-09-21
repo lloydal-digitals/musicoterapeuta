@@ -166,9 +166,9 @@ ${nombresRitmicos()}${safariSonoro()}${mapaSonoro()}${semaforo()}${etiquetas()}$
 }
 
 // ---------- Sección 10 · Planificador ----------
-function planificador() {
+function planificador(num) {
   const row = (t) => `<tr><td class="stage-cell">${t}</td><td></td><td class="min"></td><td></td></tr>`;
-  return page('plan-clase', 'Planificador de clase o sesión', 'Sección 10 · una hoja por encuentro', `
+  return page('plan-clase', 'Planificador de clase o sesión', `Sección ${num} · una hoja por encuentro`, `
     <div class="plan-head">
       <p><b>Fecha:</b> <span class="wline inline short"></span></p>
       <p><b>Grupo / niño:</b> <span class="wline inline"></span></p>
@@ -184,12 +184,12 @@ function planificador() {
     <p class="juego-hint"><b>Cómo salió:</b></p>
     ${lines(4)}
     <p class="juego-hint"><b>Para la próxima:</b></p>
-    ${lines(2)}`, 'Sección 10 · Planificador');
+    ${lines(2)}`, `Sección ${num} · Planificador`);
 }
 
-function observacion() {
+function observacion(num) {
   const rows = Array.from({ length: 7 }, () => '<tr><td></td><td></td><td></td><td></td></tr>').join('');
-  return page('plan-observacion', 'Hoja de observación', 'Sección 10 · registro por niño a lo largo del tiempo', `
+  return page('plan-observacion', 'Hoja de observación', `Sección ${num} · registro por niño a lo largo del tiempo`, `
     <div class="plan-head">
       <p><b>Niño/a:</b> <span class="wline inline"></span></p>
       <p><b>Edad:</b> <span class="wline inline short"></span></p>
@@ -199,23 +199,23 @@ function observacion() {
       <thead><tr><th>Fecha</th><th>Actividad</th><th>Qué observé</th><th>Próxima vez</th></tr></thead>
       <tbody>${rows}</tbody>
     </table>
-    <p class="juego-hint">Anotá lo que viste, no lo que esperabas ver. Una línea por encuentro alcanza; con el tiempo, esta hoja cuenta una historia.</p>`, 'Sección 10 · Planificador');
+    <p class="juego-hint">Anotá lo que viste, no lo que esperabas ver. Una línea por encuentro alcanza; con el tiempo, esta hoja cuenta una historia.</p>`, `Sección ${num} · Planificador`);
 }
 
-export function seccionPlanificadorHtml() {
+export function seccionPlanificadorHtml(num = '10') {
   return `
 <section class="divider" id="planificador" style="--eje:oklch(60% .15 150)">
-  <span class="bignum">10</span>
+  <span class="bignum">${num}</span>
   <div class="divider-inner">
     <span class="ico-circle">📝</span>
-    <p class="kicker">Sección 10</p>
+    <p class="kicker">Sección ${num}</p>
     <h1>Planificador</h1>
     <p class="desc">Dos hojas para el adulto: una para armar cada clase o sesión con la estructura apertura–desarrollo–cierre, y otra para registrar lo que observás en cada niño a lo largo del tiempo. Imprimí las que necesites.</p>
     <table class="toc"><tbody>
-      <tr><td class="code">10.1</td><td><b>Planificador de clase o sesión</b> — una hoja por encuentro</td><td></td></tr>
-      <tr><td class="code">10.2</td><td><b>Hoja de observación</b> — una hoja por niño</td><td></td></tr>
+      <tr><td class="code">${num}.1</td><td><b>Planificador de clase o sesión</b> — una hoja por encuentro</td><td></td></tr>
+      <tr><td class="code">${num}.2</td><td><b>Hoja de observación</b> — una hoja por niño</td><td></td></tr>
     </tbody></table>
   </div>
 </section>
-${planificador()}${observacion()}`;
+${planificador(num)}${observacion(num)}`;
 }

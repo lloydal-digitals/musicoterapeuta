@@ -19,6 +19,10 @@ const ROOT = resolve(__dirname, '..');
 const SRC = join(ROOT, 'contenido', 'actividades');
 const DIST = join(__dirname, 'dist');
 const HTML_ONLY = process.argv.includes('--html-only');
+// --basico: versión del plan Básico (presentación + 36 actividades + planificador, sin tarjetas,
+// juegos, partituras ni bonus). Sale como dist/kit-basico.html / .pdf
+const BASICO = process.argv.includes('--basico');
+const OUT = BASICO ? 'kit-basico' : 'kit';
 
 const BRAND = 'Musicalización Encantada';
 const DOMAIN = 'musicalizacioninfantil.com';
@@ -118,14 +122,14 @@ function cover(count) {
   <div class="blob b1"></div><div class="blob b2"></div>
   <header class="cover-top"><span class="brand"><i>🎵</i>${BRAND}</span><span class="dom">${DOMAIN}</span></header>
   <div class="cover-main">
-    <p class="kicker">Kit de actividades musicales</p>
+    <p class="kicker">Kit de actividades musicales${BASICO ? ' · Edición básica' : ''}</p>
     <h1>Musicalización<br><em>Encantada</em></h1>
     <p class="sub">${count} actividades listas para el aula, el consultorio y la casa. Organizadas por edad, con objetivo pedagógico claro y paso a paso.</p>
     <ul class="stats">
       <li><b>${count}</b><span>actividades</span></li>
       <li><b>6</b><span>ejes</span></li>
       <li><b>2–8</b><span>años</span></li>
-      <li><b>3</b><span>contextos</span></li>
+      <li><b>${BASICO ? '3' : '10'}</b><span>${BASICO ? 'contextos' : 'secciones'}</span></li>
     </ul>
     <ul class="ctx"><li>🏫 Aula</li><li>🩺 Consultorio</li><li>🏠 Casa</li></ul>
   </div>
@@ -251,15 +255,16 @@ function tocHtml(byEje) {
   return `
 <section class="doc toc" id="indice">
   <h1 class="doc-title">Contenido</h1>
+  ${BASICO ? '<p class="doc-note">Esta es la <b>edición básica</b>: incluye la guía de uso, las 36 actividades completas y el planificador. Las tarjetas musicales, los juegos imprimibles, las partituras, el calendario anual y las fichas de ritmo que se mencionan en algunas actividades forman parte del <b>Kit Completo</b>; las actividades funcionan igual sin ellos, con los materiales que indica cada ficha.</p>' : ''}
   <ul class="toc-list">
     <li class="toc-top"><a href="#presentacion"><b>Cómo usar este kit</b></a></li>
     ${ejes}
-    <li class="toc-top" style="--eje:oklch(62% .19 38)"><a href="#tarjetas"><span class="ico">🃏</span><b>Sección 7 · Tarjetas musicales</b></a></li>
+    ${BASICO ? '' : `<li class="toc-top" style="--eje:oklch(62% .19 38)"><a href="#tarjetas"><span class="ico">🃏</span><b>Sección 7 · Tarjetas musicales</b></a></li>
     <li class="toc-top" style="--eje:oklch(58% .13 235)"><a href="#juegos"><span class="ico">🧩</span><b>Sección 8 · Juegos imprimibles</b></a></li>
-    <li class="toc-top" style="--eje:oklch(60% .17 345)"><a href="#partituras"><span class="ico">🎼</span><b>Sección 9 · Partituras ilustradas</b></a></li>
-    <li class="toc-top" style="--eje:oklch(60% .15 150)"><a href="#planificador"><span class="ico">📝</span><b>Sección 10 · Planificador</b></a></li>
-    <li class="toc-top" style="--eje:oklch(68% .16 70)"><a href="#bonus-b"><span class="ico">🗓️</span><b>Bonus B · Calendario musical anual</b></a></li>
-    <li class="toc-top" style="--eje:var(--clay)"><a href="#bonus-c"><span class="ico">🎁</span><b>Bonus C · Fichas de ritmo</b></a></li>
+    <li class="toc-top" style="--eje:oklch(60% .17 345)"><a href="#partituras"><span class="ico">🎼</span><b>Sección 9 · Partituras ilustradas</b></a></li>`}
+    <li class="toc-top" style="--eje:oklch(60% .15 150)"><a href="#planificador"><span class="ico">📝</span><b>Sección ${BASICO ? '7' : '10'} · Planificador</b></a></li>
+    ${BASICO ? '' : `<li class="toc-top" style="--eje:oklch(68% .16 70)"><a href="#bonus-b"><span class="ico">🗓️</span><b>Bonus B · Calendario musical anual</b></a></li>
+    <li class="toc-top" style="--eje:var(--clay)"><a href="#bonus-c"><span class="ico">🎁</span><b>Bonus C · Fichas de ritmo</b></a></li>`}
   </ul>
 </section>`;
 }
@@ -281,12 +286,14 @@ for (const [num, list] of [...byEje.entries()].sort((a, b) => a[0] - b[0])) {
   main += ejeDivider(num, list);
   main += list.map(activityHtml).join('\n');
 }
-main += seccionTarjetasHtml();
-main += seccionJuegosHtml();
-main += seccionPartiturasHtml();
-main += seccionPlanificadorHtml();
-main += docSectionHtml('bonus-b-calendario.md', { id: 'bonus-b', num: 'B', ico: '🗓️', kicker: 'Bonus B', titulo: 'Calendario musical anual', desc: 'Las 36 actividades repartidas a lo largo del año escolar, mes a mes, con una canción, un reto y una propuesta para las familias cada mes.', color: 'oklch(68% .16 70)', cls: 'cal', transform: calendarTransform });
-main += bonusFichasHtml();
+if (!BASICO) {
+  main += seccionTarjetasHtml();
+  main += seccionJuegosHtml();
+  main += seccionPartiturasHtml();
+}
+main += seccionPlanificadorHtml(BASICO ? '7' : '10');
+if (!BASICO) main += docSectionHtml('bonus-b-calendario.md', { id: 'bonus-b', num: 'B', ico: '🗓️', kicker: 'Bonus B', titulo: 'Calendario musical anual', desc: 'Las 36 actividades repartidas a lo largo del año escolar, mes a mes, con una canción, un reto y una propuesta para las familias cada mes.', color: 'oklch(68% .16 70)', cls: 'cal', transform: calendarTransform });
+if (!BASICO) main += bonusFichasHtml();
 main += backCover();
 const bodyHtml = emojify(main); // todos los emoji → íconos Twemoji (SVG)
 // el sprite se arma después de saber qué íconos se usaron, y va dentro de la portada para no generar una página
@@ -326,7 +333,7 @@ window.PagedConfig = { before: async () => { renderScores(); await document.font
 </html>`;
 
 if (!existsSync(DIST)) mkdirSync(DIST, { recursive: true });
-const htmlPath = join(DIST, 'kit.html');
+const htmlPath = join(DIST, `${OUT}.html`);
 writeFileSync(htmlPath, html, 'utf8');
 console.log(`HTML → ${htmlPath}  (${acts.length} actividades)`);
 
@@ -351,7 +358,7 @@ await page.goto(pathToFileURL(htmlPath).href, { waitUntil: 'load', timeout: 1200
 await page.waitForFunction('window.__pagedDone === true', { timeout: 300000, polling: 500 });
 await page.evaluateHandle('document.fonts.ready');
 const pages = await page.evaluate(() => document.querySelectorAll('.pagedjs_page').length);
-const pdfPath = join(DIST, 'kit.pdf');
+const pdfPath = join(DIST, `${OUT}.pdf`);
 await page.pdf({ path: pdfPath, preferCSSPageSize: true, printBackground: true, displayHeaderFooter: false });
 await browser.close();
 console.log(`PDF  → ${pdfPath}  (${pages} páginas)`);
