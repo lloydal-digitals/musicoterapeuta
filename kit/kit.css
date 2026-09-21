@@ -1,0 +1,317 @@
+/* Kit Musicalización Encantada — hoja de estilos de impresión (A4, paginado con Paged.js) */
+
+:root {
+  --cream: oklch(97% .02 60);
+  --sand: oklch(94% .035 55);
+  --clay: oklch(62% .19 38);
+  --cocoa: oklch(30% .06 50);
+  --honey: oklch(78% .15 75);
+  --leaf: oklch(62% .15 145);
+  --muted: oklch(50% .04 50);
+  --border: oklch(90% .03 55);
+  --eje: var(--clay);
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ---------- Páginas ---------- */
+@page {
+  size: A4;
+  margin: 20mm 16mm 20mm 16mm;
+  @top-left { content: string(sec); font: 700 7pt "Nunito", sans-serif; color: oklch(50% .04 50); letter-spacing: .1em; text-transform: uppercase; vertical-align: bottom; padding-bottom: 4mm; }
+  @top-right { content: "Kit Musicalización Encantada"; font: 700 7pt "Nunito", sans-serif; color: oklch(50% .04 50); letter-spacing: .1em; text-transform: uppercase; vertical-align: bottom; padding-bottom: 4mm; }
+  @bottom-center { content: counter(page); font: 800 8.5pt "Fraunces", serif; color: oklch(30% .06 50); vertical-align: top; padding-top: 4mm; }
+}
+@page full {
+  margin: 0;
+  @top-left { content: none; } @top-right { content: none; } @bottom-center { content: none; }
+}
+.cover, .divider, .back { page: full; }
+/* Encabezado corrido: Paged.js admite UN solo selector por nombre, por eso van juntos */
+.act-head h1, .doc h1.doc-title, .ficha-head h2 { string-set: sec content(text); }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: var(--font-sans); color: var(--cocoa); font-size: 10.5pt; line-height: 1.5; background: #fff; }
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.12; margin: 0; letter-spacing: -.012em; font-weight: 800; }
+p, ul, ol, table, blockquote { margin: 0; }
+ul, ol { padding-left: 1.2em; }
+li { margin: .15em 0; }
+a { color: inherit; text-decoration: none; }
+strong, em { color: var(--cocoa); }
+.kicker { font-weight: 800; font-size: 8.5pt; letter-spacing: .2em; text-transform: uppercase; color: var(--eje); }
+
+/* Vista en pantalla (Paged.js ya dibuja las hojas) */
+@media screen {
+  body { background: #e6e0d6; padding: 2rem 0; }
+  .pagedjs_page { background: #fff; box-shadow: 0 12px 40px -14px rgba(0,0,0,.4); margin: 0 auto 1.5rem; }
+}
+
+/* ---------- Portada ---------- */
+.cover {
+  position: relative; width: 210mm; height: 297mm; overflow: hidden;
+  background: linear-gradient(160deg, #fffaf5 0%, oklch(95% .04 55) 50%, oklch(89% .08 45) 100%);
+  display: flex; flex-direction: column; padding: 16mm 18mm;
+}
+.blob { position: absolute; border-radius: 50%; filter: blur(50px); pointer-events: none; }
+.blob.b1 { width: 120mm; height: 120mm; background: var(--honey); opacity: .5; top: -40mm; right: -40mm; }
+.blob.b2 { width: 90mm; height: 90mm; background: var(--clay); opacity: .22; bottom: -30mm; left: -30mm; }
+.cover-top, .cover-bottom { position: relative; display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 8.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.brand { display: inline-flex; align-items: center; gap: 2.5mm; font-family: var(--font-display); font-size: 11pt; letter-spacing: 0; text-transform: none; color: var(--cocoa); }
+.brand i { display: grid; place-items: center; width: 9mm; height: 9mm; border-radius: 2.5mm; background: linear-gradient(135deg, var(--clay), var(--honey)); color: #fff; font-style: normal; font-size: 5mm; }
+.cover-main { position: relative; margin-top: 38mm; max-width: 130mm; }
+.cover-main .kicker { color: var(--clay); }
+.cover h1 { font-size: 52pt; line-height: 1; margin: 4mm 0 8mm; letter-spacing: -.02em; }
+.cover h1 em { font-style: italic; font-weight: 700; color: var(--clay); }
+.cover .sub { font-size: 13pt; line-height: 1.45; color: var(--muted); font-weight: 600; max-width: 118mm; }
+.stats { list-style: none; padding: 0; margin: 12mm 0 0; display: flex; gap: 4mm; }
+.stats li { background: #fff; border-radius: 4mm; padding: 3.5mm 5mm; min-width: 26mm; box-shadow: 0 8px 28px -12px color-mix(in oklab, var(--cocoa) 30%, transparent); }
+.stats b { display: block; font-family: var(--font-display); font-size: 20pt; line-height: 1; color: var(--clay); }
+.stats span { font-size: 8pt; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.ctx { list-style: none; padding: 0; margin: 6mm 0 0; display: flex; gap: 3mm; }
+.ctx li { border: 1.5px solid color-mix(in oklab, var(--cocoa) 22%, transparent); border-radius: 999px; padding: 1.5mm 4mm; font-weight: 800; font-size: 9.5pt; }
+.cover .art { position: absolute; right: -12mm; bottom: 14mm; width: 118mm; height: 118mm; }
+.cover-bottom { margin-top: auto; padding-top: 6mm; border-top: 1.5px solid color-mix(in oklab, var(--cocoa) 15%, transparent); }
+
+/* ---------- Contraportada ---------- */
+.back { width: 210mm; height: 297mm; background: linear-gradient(135deg, oklch(40% .16 30) 0%, oklch(28% .13 25) 100%); color: var(--cream); display: flex; align-items: center; justify-content: center; text-align: center; padding: 20mm; }
+.back-inner { max-width: 140mm; }
+.back .brand { color: var(--cream); justify-content: center; margin-bottom: 14mm; font-size: 13pt; }
+.back h2 { font-size: 22pt; margin-bottom: 8mm; }
+.back p { font-size: 11pt; color: color-mix(in oklab, var(--cream) 80%, transparent); }
+.back .dom { margin-top: 10mm; font-family: var(--font-display); font-size: 15pt; color: var(--honey); font-weight: 700; }
+.back .legal { margin-top: 18mm; font-size: 8pt; line-height: 1.5; color: color-mix(in oklab, var(--cream) 55%, transparent); }
+
+/* ---------- Separador de eje ---------- */
+.divider { position: relative; width: 210mm; height: 297mm; overflow: hidden; padding: 22mm 20mm; background: linear-gradient(165deg, #fff 0%, color-mix(in oklab, var(--eje) 16%, #fff) 100%); display: flex; align-items: center; }
+.divider .bignum { position: absolute; right: -6mm; top: -18mm; font-family: var(--font-display); font-weight: 800; font-size: 240pt; line-height: 1; color: var(--eje); opacity: .09; letter-spacing: -.05em; }
+.divider-inner { position: relative; width: 100%; }
+.ico-circle { display: grid; place-items: center; width: 22mm; height: 22mm; border-radius: 50%; background: #fff; box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--eje) 50%, transparent); font-size: 11mm; margin-bottom: 8mm; }
+.divider .kicker { color: var(--eje); }
+.divider h1 { font-size: 36pt; margin: 2mm 0 5mm; max-width: 150mm; }
+.divider .desc { font-size: 12pt; color: var(--muted); font-weight: 600; max-width: 140mm; margin-bottom: 12mm; }
+.divider-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 2.5mm; }
+.divider-list a { display: grid; grid-template-columns: 14mm 1fr auto; align-items: center; gap: 4mm; background: rgba(255,255,255,.75); border: 1px solid color-mix(in oklab, var(--eje) 22%, transparent); border-radius: 4mm; padding: 3mm 4.5mm; }
+.divider-list .code { font-family: var(--font-display); font-weight: 800; font-size: 11pt; color: #fff; background: var(--eje); border-radius: 2.5mm; text-align: center; padding: 1.2mm 0; }
+.divider-list .t b { display: block; font-size: 11.5pt; }
+.divider-list .t small { display: block; font-size: 8.5pt; color: var(--muted); font-weight: 600; line-height: 1.3; }
+.divider-list .age { font-size: 8.5pt; font-weight: 800; color: var(--eje); background: color-mix(in oklab, var(--eje) 12%, #fff); border-radius: 999px; padding: 1mm 3mm; white-space: nowrap; }
+.divider .toc { width: 100%; border-collapse: collapse; text-align: left; font-size: 10.5pt; background: rgba(255,255,255,.7); border-radius: 4mm; overflow: hidden; }
+.divider .toc td { padding: 3mm 4mm; border-bottom: 1px solid color-mix(in oklab, var(--eje) 20%, transparent); vertical-align: top; }
+.divider .toc td.code { font-family: var(--font-display); font-weight: 800; color: var(--eje); width: 14mm; }
+.divider .toc td:last-child { color: var(--muted); font-weight: 700; white-space: nowrap; width: 22mm; }
+
+/* ---------- Índice ---------- */
+.toc-list { list-style: none; padding: 0; margin: 0; }
+.toc-list a { display: flex; align-items: baseline; gap: 3mm; }
+.toc-list a::after { content: target-counter(attr(href), page); margin-left: auto; font-family: var(--font-display); font-weight: 800; color: var(--muted); }
+.toc-list .toc-top > a, .toc-list .toc-eje > a { font-size: 12.5pt; padding: 3mm 0 1.5mm; border-bottom: 2px solid color-mix(in oklab, var(--eje) 35%, transparent); margin-top: 4mm; }
+.toc-list .toc-eje > a::after, .toc-list .toc-top > a::after { color: var(--eje); }
+.toc-list .ico { font-size: 11pt; }
+.toc-list ul { list-style: none; padding: 0 0 0 9mm; margin: 1.5mm 0 0; }
+.toc-list ul a { font-size: 10pt; padding: 1mm 0; border-bottom: 1px dotted var(--border); }
+.toc-list ul a .code { font-family: var(--font-display); font-weight: 800; color: var(--eje); width: 10mm; }
+.toc-list ul a .age { font-size: 8pt; font-weight: 700; color: var(--muted); margin-left: 2mm; }
+
+/* ---------- Actividad ---------- */
+.act { break-before: page; }
+.act-head { background: color-mix(in oklab, var(--eje) 9%, #fff); border-left: 3mm solid var(--eje); border-radius: 0 5mm 5mm 0; padding: 6mm 7mm 6mm 8mm; margin-bottom: 5mm; }
+.act-head h1 { font-size: 26pt; margin: 2.5mm 0 3mm; }
+.act-kicker { display: flex; align-items: center; gap: 3mm; font-weight: 800; font-size: 8.5pt; letter-spacing: .12em; text-transform: uppercase; }
+.act-kicker .code { background: var(--eje); color: #fff; padding: .2em .7em; border-radius: 999px; letter-spacing: .06em; font-family: var(--font-display); font-size: 9.5pt; }
+.act-kicker .eje { color: var(--eje); }
+.resumen { font-size: 11.5pt; color: var(--muted); font-weight: 600; max-width: 150mm; }
+.badges { list-style: none; padding: 0; margin: 4mm 0 0; display: flex; flex-wrap: wrap; gap: 2mm 2.5mm; }
+.badges li { background: #fff; border: 1px solid color-mix(in oklab, var(--eje) 25%, transparent); border-radius: 999px; padding: 1.2mm 3.5mm; font-size: 9pt; font-weight: 700; }
+.badges li b { color: var(--eje); font-weight: 800; margin-right: 1.5mm; text-transform: uppercase; font-size: 7.5pt; letter-spacing: .08em; }
+
+.ficha { display: grid; grid-template-columns: 1.15fr 1fr; gap: 4mm; margin-bottom: 5mm; break-inside: avoid; }
+.box { background: var(--cream); border-radius: 4mm; padding: 4.5mm 5mm; }
+.box.obj { background: #fff; border: 1.5px solid color-mix(in oklab, var(--eje) 30%, transparent); }
+.box h4 { font-size: 11pt; margin-bottom: 2mm; }
+.box .main { font-weight: 700; }
+.box .lbl { font-size: 7.5pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 3mm 0 1mm; }
+.box ul { padding-left: 1.1em; }
+.box li { font-size: 9.5pt; }
+.box li::marker { color: var(--eje); }
+.box ul.link li { color: var(--eje); font-weight: 700; }
+
+/* Cuerpo */
+.body h2.sec { font-size: 14.5pt; margin: 6.5mm 0 3mm; display: flex; align-items: center; gap: 2.5mm; break-after: avoid; }
+.body h2.sec .ico { display: grid; place-items: center; width: 8mm; height: 8mm; border-radius: 2.5mm; background: color-mix(in oklab, var(--eje) 14%, #fff); font-size: 10pt; }
+.body h2.sec > span:last-child { flex: 1; border-bottom: 2px solid color-mix(in oklab, var(--eje) 30%, transparent); padding-bottom: 1mm; }
+.body h3.stage { font-size: 8.5pt; font-family: var(--font-sans); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--eje); margin: 4mm 0 2mm; display: inline-flex; align-items: center; gap: 2mm; break-after: avoid; }
+.body h3.stage::before { content: ""; width: 5mm; height: 2px; background: var(--eje); }
+.body h3.stage.aula, .body h3.stage.consultorio, .body h3.stage.casa { display: block; background: color-mix(in oklab, var(--eje) 9%, #fff); border-radius: 999px; padding: 1.2mm 4mm; margin-top: 4mm; width: fit-content; }
+.body h3.stage.aula::before, .body h3.stage.consultorio::before, .body h3.stage.casa::before { content: none; }
+.body p { margin: 0 0 2.2mm; }
+.body ul { padding-left: 1.3em; }
+.body ul > li::marker { color: var(--eje); }
+.body ol { list-style: none; padding: 0; }
+.body ol > li { position: relative; padding-left: 9mm; margin: 0 0 2.2mm; min-height: 6.5mm; }
+.body ol > li::before { content: attr(data-n); position: absolute; left: 0; top: .1em; width: 6.5mm; height: 6.5mm; border-radius: 50%; background: var(--eje); color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 9.5pt; display: grid; place-items: center; }
+.body ol ol, .body ol ul { margin-top: 1.5mm; }
+.body ol ol { padding-left: 0; }
+.body ol ol > li { padding-left: 6mm; min-height: 0; }
+.body ol ol > li::before { content: attr(data-n) "."; background: none; color: var(--eje); width: auto; height: auto; top: 0; font-size: 9.5pt; }
+.body blockquote {
+  margin: 2mm 0 3mm; padding: 3.5mm 6mm; border-left: 3px solid var(--honey);
+  background: color-mix(in oklab, var(--honey) 12%, #fff); border-radius: 0 3mm 3mm 0;
+  font-family: var(--font-display); font-style: italic; font-size: 11pt; line-height: 1.55;
+  break-inside: avoid;
+}
+.body blockquote p { margin: 0; }
+.body table { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 1mm 0 3mm; break-inside: avoid; }
+.body th { text-align: left; font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 1.5mm 3mm; border-bottom: 2px solid color-mix(in oklab, var(--eje) 30%, transparent); }
+.body td { padding: 2.2mm 3mm; border-bottom: 1px solid var(--border); vertical-align: top; }
+.body tr:nth-child(even) td { background: color-mix(in oklab, var(--eje) 4%, #fff); }
+.body td:first-child { font-weight: 700; width: 42%; }
+.body code { font-family: var(--font-sans); background: var(--sand); padding: 0 .3em; border-radius: 3px; }
+
+/* ---------- Sección 0: presentación e índice ---------- */
+.doc { break-before: page; --eje: var(--clay); }
+.doc h1.doc-title { font-size: 28pt; border-left: 3mm solid var(--clay); padding-left: 6mm; margin-bottom: 6mm; }
+.doc h2.sec { font-size: 14.5pt; margin: 6.5mm 0 2.5mm; padding-bottom: 1.5mm; border-bottom: 2px solid color-mix(in oklab, var(--clay) 35%, transparent); break-after: avoid; }
+.doc h3.stage { font-size: 8.5pt; font-family: var(--font-sans); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--clay); margin: 4mm 0 1.5mm; }
+.doc p { margin: 0 0 2.5mm; }
+.doc ul, .doc ol { margin: 0 0 2.5mm; }
+.doc li { margin: .3em 0; }
+.doc li::marker { color: var(--clay); }
+.doc table { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 2mm 0 4mm; break-inside: avoid; }
+.doc th { text-align: left; font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 1.5mm 2.5mm; border-bottom: 2px solid color-mix(in oklab, var(--clay) 30%, transparent); }
+.doc td { padding: 2mm 2.5mm; border-bottom: 1px solid var(--border); vertical-align: top; }
+.doc tr:nth-child(even) td { background: color-mix(in oklab, var(--clay) 4%, #fff); }
+.doc td:first-child { font-weight: 700; white-space: nowrap; }
+
+/* ---------- Bonus C: fichas de ritmo ---------- */
+.ficha-page { break-before: page; display: flex; flex-direction: column; height: 257mm; }
+.ficha-head { display: flex; align-items: baseline; justify-content: space-between; gap: 4mm; border-bottom: 2px solid color-mix(in oklab, var(--clay) 30%, transparent); padding-bottom: 2mm; margin-bottom: 5mm; }
+.ficha-head h2 { font-size: 16pt; }
+.ficha-head p { font-size: 9pt; font-weight: 700; color: var(--muted); text-align: right; }
+.ficha-grid { display: grid; gap: 4mm; align-content: start; flex: 1; }
+.grid-3 .ficha-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 55mm; }
+.grid-2 .ficha-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 58mm; }
+.ficha-foot { margin-top: auto; padding-top: 3mm; font-size: 7.5pt; font-weight: 700; color: var(--muted); text-align: center; }
+
+.ficha-card { position: relative; border: 1.5px dashed color-mix(in oklab, var(--cocoa) 35%, transparent); border-radius: 4mm; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4mm; break-inside: avoid; }
+.ficha-card .tag { position: absolute; top: 2mm; right: 3mm; font-size: 6.5pt; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.ficha-card .lbl { text-align: center; line-height: 1.2; margin-top: 1mm; }
+.ficha-card .lbl b { display: block; font-family: var(--font-display); font-size: 15pt; color: var(--cocoa); }
+.ficha-card .lbl small { font-size: 7.5pt; font-weight: 700; color: var(--muted); }
+.ficha-card svg.fig { width: 30mm; height: 30mm; display: block; }
+.ficha-card.vagon.n1 { background: color-mix(in oklab, var(--clay) 7%, #fff); }
+.ficha-card.vagon.n2 { background: color-mix(in oklab, var(--honey) 14%, #fff); }
+.ficha-card.vagon.n3 { background: color-mix(in oklab, var(--leaf) 9%, #fff); }
+.ficha-card .beats { display: flex; width: 100%; gap: 1mm; align-items: flex-end; }
+.ficha-card .beat { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.ficha-card .beat svg.fig { width: 100%; max-width: 22mm; height: 22mm; }
+.ficha-card .beat small { font-size: 8pt; font-weight: 800; color: var(--clay); }
+.ficha-card .pulsos { display: flex; width: 100%; justify-content: space-around; margin-top: 1.5mm; }
+.ficha-card .pulsos span { width: 3mm; height: 3mm; border-radius: 50%; background: var(--cocoa); opacity: .6; }
+.ficha-card.corp .icos { display: flex; gap: .5mm; justify-content: center; align-items: center; height: 18mm; font-size: 20pt; line-height: 1; }
+.ficha-card.corp .icos.n2 { font-size: 15pt; }
+.ficha-card.corp .icos .rest { font-size: 16pt; color: var(--muted); }
+.ficha-card.corp .lbl b { font-size: 12pt; }
+.ficha-page.intro .ficha-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; font-size: 10pt; }
+.ficha-page.intro h3 { font-size: 12pt; margin: 3mm 0 1.5mm; color: var(--clay); }
+.ficha-page.intro p { margin-bottom: 2mm; }
+
+/* ---------- Íconos (Twemoji como SVG) ---------- */
+svg.em { width: 1.15em; height: 1.15em; vertical-align: -.22em; display: inline-block; }
+svg.fig { width: 100%; height: 100%; display: block; }
+
+/* ---------- Sección 7: tarjetas ---------- */
+.ficha-card.tarjeta { background: color-mix(in oklab, var(--cat) 8%, #fff); border-color: color-mix(in oklab, var(--cat) 45%, transparent); justify-content: space-between; padding: 6mm 4mm 4mm; }
+.ficha-card.tarjeta .tag { color: var(--cat); }
+.ficha-card.tarjeta .fig-wrap { width: 30mm; height: 30mm; margin: 2mm auto 0; display: grid; place-items: center; }
+.ficha-card.tarjeta .fig-wrap svg { width: 30mm; height: 30mm; }
+.ficha-card.tarjeta .lbl b { font-size: 14pt; }
+.ficha-card.tarjeta .lbl small { color: var(--cat); }
+
+/* ---------- Sección 8: juegos ---------- */
+.juego .ficha-grid { flex: 0 0 auto; }
+.grid-2-4 { grid-template-columns: 1fr 1fr; grid-auto-rows: 50mm; }
+.grid-2-3 { grid-template-columns: 1fr 1fr; grid-auto-rows: 62mm; }
+.juego-hint { font-size: 10pt; color: var(--cocoa); margin: 0 0 4mm; line-height: 1.6; }
+.juego-hint b { color: var(--cocoa); }
+.juego-top { display: flex; gap: 5mm; align-items: flex-start; margin-bottom: 2mm; }
+.juego-big { flex: 0 0 18mm; width: 18mm; height: 18mm; }
+.juego-big svg { width: 18mm; height: 18mm; }
+.wline { border-bottom: 1.5px solid color-mix(in oklab, var(--cocoa) 40%, transparent); height: 7mm; }
+.wline.big { height: 10mm; }
+.wline.inline { display: inline-block; width: 60mm; height: 1em; vertical-align: baseline; }
+.wline.inline.short { width: 30mm; }
+.wline.inline.long { width: 110mm; }
+.lbl-small { font-size: 8pt; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 2mm 0 0; }
+.chk { display: inline-block; width: 5mm; height: 5mm; border: 1.5px solid color-mix(in oklab, var(--cocoa) 50%, transparent); border-radius: 1.2mm; vertical-align: middle; background: #fff; }
+.name-card { align-items: stretch; justify-content: flex-start; padding: 5mm 5mm 4mm; }
+.dots-row { display: flex; gap: 3mm; justify-content: center; margin-top: 3mm; }
+.dots-row .dot { width: 9mm; height: 9mm; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; border: 1.5px solid var(--clay); background: #fff; }
+.label-card { align-items: stretch; justify-content: flex-start; padding: 5mm; background: color-mix(in oklab, var(--honey) 10%, #fff); }
+.label-card .wline { height: 6mm; }
+.label-card .wline.big { height: 9mm; }
+.juego-table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; }
+.juego-table th { font-size: 8pt; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); padding: 2mm; border-bottom: 2px solid var(--border); text-align: center; line-height: 1.3; }
+.juego-table th svg.em { width: 1.6em; height: 1.6em; }
+.juego-table th:first-child { text-align: left; }
+.juego-table td { border: 1px solid var(--border); padding: 2mm; vertical-align: top; }
+.juego-table.safari td.draw { height: 24mm; width: 45%; position: relative; }
+.juego-table.safari td.draw .n { position: absolute; top: 1.5mm; left: 2mm; font-family: var(--font-display); font-weight: 800; color: var(--clay); }
+.juego-table.safari td.c { text-align: center; vertical-align: middle; }
+.juego-table.safari td.c .chk { width: 7mm; height: 7mm; }
+.mapa { width: 150mm; margin: 0 auto; }
+.mapa-svg { width: 150mm; height: 150mm; display: block; }
+.legend { display: flex; flex-wrap: wrap; gap: 2mm 5mm; align-items: center; margin-top: 4mm; font-size: 9pt; font-weight: 700; color: var(--muted); }
+.legend b { color: var(--cocoa); width: 100%; font-family: var(--font-display); font-size: 11pt; }
+.legend-box { border: 1.5px dashed var(--border); border-radius: 4mm; padding: 4mm 5mm; }
+.legend-box span { width: 45%; }
+.sem-grid { display: grid; gap: 5mm; }
+.sem-card { display: grid; grid-template-columns: 40mm 1fr; align-items: center; gap: 6mm; height: 62mm; border: 1.5px dashed color-mix(in oklab, var(--cocoa) 35%, transparent); border-radius: 5mm; padding: 6mm 8mm; background: color-mix(in oklab, var(--c) 14%, #fff); }
+.sem-light { width: 40mm; height: 40mm; }
+.sem-light svg { width: 40mm; height: 40mm; }
+.sem-card b { display: block; font-family: var(--font-display); font-size: 26pt; color: var(--cocoa); line-height: 1.1; }
+.sem-card small { display: block; font-size: 11pt; font-weight: 700; color: var(--muted); margin-top: 2mm; }
+.det-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3mm; }
+.det-cell { position: relative; border: 1.5px solid var(--border); border-radius: 4mm; padding: 4mm 2mm 3mm; text-align: center; }
+.det-cell .chk { position: absolute; top: 2mm; left: 2mm; }
+.det-fig { width: 18mm; height: 18mm; margin: 0 auto 1.5mm; }
+.det-fig svg { width: 18mm; height: 18mm; }
+.det-cell b { font-size: 9pt; }
+.staff { display: flex; align-items: center; gap: 4mm; margin: 6mm 0; }
+.staff-n { font-family: var(--font-display); font-weight: 800; color: var(--clay); width: 6mm; }
+.staff-line { flex: 1; height: 26mm; border-left: 3px solid var(--clay); border-bottom: 1.5px solid color-mix(in oklab, var(--cocoa) 40%, transparent); background: repeating-linear-gradient(90deg, transparent 0 24mm, color-mix(in oklab, var(--cocoa) 12%, transparent) 24mm calc(24mm + 1px)); }
+.plan-head { display: flex; gap: 8mm; flex-wrap: wrap; margin-bottom: 3mm; }
+.plan-head p { font-size: 10pt; }
+.juego-table.plan td { height: 22mm; }
+.juego-table.plan td.stage-cell { font-weight: 800; font-family: var(--font-display); color: var(--clay); width: 24mm; vertical-align: middle; }
+.juego-table.plan td.min { width: 14mm; }
+.juego-table.obs td { height: 20mm; }
+.juego-table.obs th:first-child, .juego-table.obs td:first-child { width: 22mm; }
+
+/* Calendario: tabla de trimestres */
+.doc table.wide td:first-child { white-space: normal; }
+
+/* ---------- Bonus B: calendario ---------- */
+.cal h1.doc-title { border-color: var(--eje); }
+.cal-meta { display: grid; grid-template-columns: 34mm 1fr; gap: 3mm; align-items: start; padding: 2.5mm 0; border-bottom: 1px solid var(--border); font-size: 10pt; }
+.cal-meta b { color: var(--eje); }
+.cal-meta + .cal-meta { border-bottom: 0; }
+.cal-meta + h2.sec { margin-top: 7mm; }
+.cal h2.sec { border-color: color-mix(in oklab, var(--eje) 40%, transparent); }
+.cal ol { list-style: none; padding: 0; margin: 3mm 0 6mm; display: grid; gap: 3mm; }
+.cal ol > li { position: relative; padding: 4mm 5mm 4mm 16mm; background: color-mix(in oklab, var(--eje) 7%, #fff); border-radius: 4mm; min-height: 14mm; margin: 0; }
+.cal ol > li::before { content: attr(data-n); position: absolute; left: 4.5mm; top: 3.5mm; width: 8mm; height: 8mm; border-radius: 50%; background: var(--eje); color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 11pt; display: grid; place-items: center; }
+.cal ol > li strong { display: block; font-family: var(--font-display); font-size: 12pt; margin-bottom: .5mm; }
+.cal-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4mm; margin-top: 2mm; }
+.cal-box { background: var(--cream); border-radius: 4mm; padding: 4mm 4.5mm; font-size: 9.5pt; }
+.cal-box b { display: block; font-family: var(--font-display); font-size: 11pt; color: var(--eje); margin-bottom: 1.5mm; }
+.cal-box p { margin: 0; }
+.cal-box:nth-child(1) { background: color-mix(in oklab, var(--honey) 16%, #fff); }
+.cal-box:nth-child(2) { background: color-mix(in oklab, var(--clay) 8%, #fff); }
+.cal-box:nth-child(3) { background: color-mix(in oklab, var(--leaf) 10%, #fff); }
+.cal ol > li { break-inside: avoid; }
+.cal ol:has(li:nth-child(7)) { grid-template-columns: 1fr 1fr; }
+.det-grid { gap: 2.5mm; margin: 1.5mm 0 3mm; }
+.det-cell { padding: 3mm 2mm 2mm; }
+.det-fig, .det-fig svg { width: 13mm; height: 13mm; }
+.det-cell b { font-size: 8pt; }
