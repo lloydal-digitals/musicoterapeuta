@@ -11,6 +11,7 @@ import { marked } from 'marked';
 import { bonusFichasHtml } from './fichas.mjs';
 import { seccionTarjetasHtml } from './tarjetas.mjs';
 import { seccionJuegosHtml, seccionPlanificadorHtml } from './juegos.mjs';
+import { seccionPartiturasHtml } from './partituras.mjs';
 import { emojify, sprite } from './emoji.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -255,6 +256,7 @@ function tocHtml(byEje) {
     ${ejes}
     <li class="toc-top" style="--eje:oklch(62% .19 38)"><a href="#tarjetas"><span class="ico">🃏</span><b>Sección 7 · Tarjetas musicales</b></a></li>
     <li class="toc-top" style="--eje:oklch(58% .13 235)"><a href="#juegos"><span class="ico">🧩</span><b>Sección 8 · Juegos imprimibles</b></a></li>
+    <li class="toc-top" style="--eje:oklch(60% .17 345)"><a href="#partituras"><span class="ico">🎼</span><b>Sección 9 · Partituras ilustradas</b></a></li>
     <li class="toc-top" style="--eje:oklch(60% .15 150)"><a href="#planificador"><span class="ico">📝</span><b>Sección 10 · Planificador</b></a></li>
     <li class="toc-top" style="--eje:oklch(68% .16 70)"><a href="#bonus-b"><span class="ico">🗓️</span><b>Bonus B · Calendario musical anual</b></a></li>
     <li class="toc-top" style="--eje:var(--clay)"><a href="#bonus-c"><span class="ico">🎁</span><b>Bonus C · Fichas de ritmo</b></a></li>
@@ -281,6 +283,7 @@ for (const [num, list] of [...byEje.entries()].sort((a, b) => a[0] - b[0])) {
 }
 main += seccionTarjetasHtml();
 main += seccionJuegosHtml();
+main += seccionPartiturasHtml();
 main += seccionPlanificadorHtml();
 main += docSectionHtml('bonus-b-calendario.md', { id: 'bonus-b', num: 'B', ico: '🗓️', kicker: 'Bonus B', titulo: 'Calendario musical anual', desc: 'Las 36 actividades repartidas a lo largo del año escolar, mes a mes, con una canción, un reto y una propuesta para las familias cada mes.', color: 'oklch(68% .16 70)', cls: 'cal', transform: calendarTransform });
 main += bonusFichasHtml();
@@ -291,6 +294,7 @@ main = bodyHtml.replace('<section class="cover" id="portada">', '<section class=
 
 const css = readFileSync(join(__dirname, 'kit.css'), 'utf8');
 const paged = readFileSync(join(__dirname, 'node_modules', 'pagedjs', 'dist', 'paged.polyfill.js'), 'utf8');
+const abcjs = readFileSync(join(__dirname, 'node_modules', 'abcjs', 'dist', 'abcjs-basic-min.js'), 'utf8');
 const html = `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -303,7 +307,20 @@ const html = `<!DOCTYPE html>
 </head>
 <body>
 ${main}
-<script>window.PagedConfig = { before: () => document.fonts.ready, after: () => { window.__pagedDone = true; } };</script>
+<script>${abcjs}</script>
+<script>
+// Dibuja las partituras (abcjs) antes de que Paged.js pagine
+function renderScores() {
+  document.querySelectorAll('.abc[data-abc]').forEach((el) => {
+    ABCJS.renderAbc(el, el.dataset.abc, {
+      responsive: 'resize', staffwidth: 700, add_classes: true, paddingtop: 0, paddingbottom: 0, paddingleft: 0, paddingright: 0,
+      format: { vocalfont: 'Nunito 13', gchordfont: 'Nunito bold 12', annotationfont: 'Nunito 11', tempofont: 'Nunito 11', vocalspace: 6 },
+    });
+    el.querySelectorAll('.abcjs-title, .abcjs-tempo').forEach((t) => t.remove());
+  });
+}
+window.PagedConfig = { before: async () => { renderScores(); await document.fonts.ready; }, after: () => { window.__pagedDone = true; } };
+</script>
 <script>${paged}</script>
 </body>
 </html>`;

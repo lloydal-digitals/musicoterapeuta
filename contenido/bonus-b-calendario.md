@@ -147,7 +147,7 @@ Este calendario reparte las 36 actividades del kit a lo largo del **año escolar
 3. **Terminar y tocar.** 4–5 y 6–8: I03 segunda clase: decorar, etiquetas, orquesta de cotidiáfonos con C04. 2–3: I01 con los instrumentos nuevos.
 4. **Contar con sonidos.** 2–3: R01 con instrumentos. 4–5: I04 Cuento sonorizado. 6–8: I04 con cuento propio.
 
-**Canción del mes:** «El elefante trompita» con instrumentos: el elefante grave, el pajarito agudo.
+**Canción del mes:** «Aserrín, aserrán» con instrumentos: la sierra en el tambor, y las claves para «piden pan, no les dan».
 
 **Reto del mes:** que cada niño tenga un instrumento con su nombre y sepa cómo suena.
 

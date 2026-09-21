@@ -26,7 +26,7 @@
   margin: 0;
   @top-left { content: none; } @top-right { content: none; } @bottom-center { content: none; }
 }
-.cover, .divider, .back { page: full; }
+.cover, .divider, .back { page: full; break-before: page; }
 /* Encabezado corrido: Paged.js admite UN solo selector por nombre, por eso van juntos */
 .act-head h1, .doc h1.doc-title, .ficha-head h2 { string-set: sec content(text); }
 
@@ -315,3 +315,30 @@ svg.fig { width: 100%; height: 100%; display: block; }
 .det-cell { padding: 3mm 2mm 2mm; }
 .det-fig, .det-fig svg { width: 13mm; height: 13mm; }
 .det-cell b { font-size: 8pt; }
+
+/* ---------- Sección 9: partituras ---------- */
+.cancion-top { display: flex; gap: 6mm; align-items: center; margin-bottom: 4mm; }
+.cancion-ico { flex: 0 0 22mm; width: 22mm; height: 22mm; }
+.cancion-ico svg { width: 22mm; height: 22mm; }
+.cancion-meta p { font-size: 9.5pt; margin: 0 0 1mm; }
+.cancion-meta b { display: inline-block; width: 20mm; font-size: 7.5pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.abc { margin: 2mm 0 5mm; break-inside: avoid; }
+.abc svg { width: 100%; height: auto; }
+.abc .abcjs-lyric { font-family: var(--font-sans); font-weight: 700; }
+.abc .abcjs-chord { fill: var(--clay); font-family: var(--font-sans); font-weight: 800; }
+.cancion-bottom { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6mm; }
+.cancion-letra, .cancion-tips { background: var(--cream); border-radius: 4mm; padding: 4mm 5mm; font-size: 9.5pt; }
+.cancion-letra b, .cancion-tips b { display: block; font-family: var(--font-display); font-size: 11pt; color: var(--clay); margin-bottom: 2mm; }
+.cancion-letra p { margin: 0; font-family: var(--font-display); font-style: italic; font-size: 10.5pt; line-height: 1.5; }
+.cancion-letra p.sep { height: 3mm; }
+.cancion-tips ul { padding-left: 1.2em; margin: 0; }
+.cancion-tips li { margin: 0 0 1.5mm; }
+.cancion-tips li::marker { color: var(--clay); }
+.trad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.trad-card { background: var(--cream); border-radius: 4mm; padding: 4mm 5mm; font-size: 10pt; }
+.trad-card b { display: block; font-family: var(--font-display); font-size: 12pt; margin-bottom: 1.5mm; }
+.trad-card p { margin: 0; line-height: 1.55; }
+.trad-card mark { background: color-mix(in oklab, var(--honey) 45%, #fff); color: var(--cocoa); font-weight: 800; padding: 0 .2em; border-radius: 2px; }
+.trad-card.blank { background: #fff; border: 1.5px dashed var(--border); }
+.trad-card.blank .wline { height: 6.5mm; }
+

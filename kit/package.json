@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@twemoji/svg": "^15.0.0",
+    "abcjs": "^6.7.0",
     "js-yaml": "^5.4.2",
     "marked": "^18.0.13",
     "pagedjs": "^0.4.3",
