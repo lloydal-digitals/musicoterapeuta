@@ -392,6 +392,28 @@
     .buy-toast .x { border: 0; background: none; color: var(--muted-fg); font-size: 1.1rem; cursor: pointer; padding: 0 .1rem; line-height: 1; }
     @media (max-width: 899px) { .buy-toast { top: 64px; left: .75rem; right: .75rem; max-width: none; } }
 
+    /* ---------- MODAL UPSELL (al elegir Básico) ---------- */
+    .upsell { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 1rem; background: color-mix(in oklab, oklch(30% .14 25) 70%, transparent); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s; }
+    .upsell.show { opacity: 1; visibility: visible; }
+    .upsell-card { position: relative; width: 100%; max-width: 480px; max-height: calc(100vh - 2rem); overflow-y: auto; background: var(--card); color: var(--cocoa); border-radius: calc(var(--radius) * 1.75); padding: 2rem 1.75rem 1.5rem; text-align: center; box-shadow: 0 40px 100px -20px rgba(0,0,0,.55); transform: translateY(24px) scale(.96); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+    .upsell.show .upsell-card { transform: none; }
+    .upsell-close { position: absolute; top: .75rem; right: .75rem; width: 36px; height: 36px; border: 0; border-radius: 50%; background: transparent; color: var(--muted-fg); font-size: 1.6rem; line-height: 1; cursor: pointer; display: grid; place-items: center; }
+    .upsell-close:hover { background: var(--cream); color: var(--cocoa); }
+    .upsell-card .eyebrow { margin-bottom: .75rem; font-size: .72rem; padding: .35rem .85rem; }
+    .upsell-card h2 { font-size: clamp(1.5rem, 3.5vw, 1.9rem); }
+    .upsell-card .desc { margin-top: .75rem; font-size: 1rem; color: var(--muted-fg); }
+    .upsell-card .desc strong { color: var(--cocoa); }
+    .upsell-price { margin-top: 1.1rem; padding: 1rem; border-radius: calc(var(--radius) * 1.25); background: color-mix(in oklab, var(--honey) 22%, var(--cream)); }
+    .upsell-price .from { color: var(--muted-fg); text-decoration: line-through; font-weight: 700; font-size: .9rem; }
+    .upsell-price .price { font-family: var(--font-display); font-size: 2.4rem; font-weight: 800; line-height: 1.1; color: var(--clay); }
+    .upsell-price .price small { font-family: var(--font-sans); font-size: .9rem; font-weight: 700; color: var(--muted-fg); }
+    .upsell-price .save { display: block; margin-top: .2rem; font-weight: 800; font-size: .95rem; color: var(--leaf); }
+    .upsell-card .btn-primary { margin-top: 1.1rem; padding: .9rem 1.5rem; font-size: 1rem; }
+    .upsell-decline { display: inline-block; margin-top: .9rem; background: none; border: 0; color: var(--muted-fg); font-family: var(--font-sans); font-weight: 600; font-size: .95rem; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+    .upsell-decline:hover { color: var(--cocoa); }
+    @media (max-width: 767px) { .upsell-card { padding: 1.75rem 1.1rem 1.25rem; } .upsell-price .price { font-size: 2.1rem; } }
+    @media (prefers-reduced-motion: reduce) { .upsell, .upsell-card { transition: none; } }
+
     /* ---------- FOCO / ACCESIBILIDAD ---------- */
     :focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; border-radius: 6px; }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -760,7 +782,7 @@
           </ul>
           <div class="price">$ 14.900 <small>ARS · pago único</small></div>
           <!-- Poné acá el link de checkout -->
-          <a class="btn btn-outline btn-block" href="#">Elegir Básico</a>
+          <a class="btn btn-outline btn-block" id="btnBasico" href="#">Elegir Básico</a>
         </div>
         <div class="plan featured reveal">
           <span class="ribbon">El más elegido ⭐</span>
@@ -866,6 +888,24 @@
     © <span id="year">2026</span> • Todos los derechos reservados.
   </footer>
 
+  <!-- Modal upsell: aparece al elegir el plan Básico y ofrece el Premium con descuento -->
+  <div class="upsell" id="upsell" role="dialog" aria-modal="true" aria-labelledby="upsellTitle" hidden>
+    <div class="upsell-card">
+      <button class="upsell-close" type="button" id="upsellClose" aria-label="Cerrar">×</button>
+      <span class="eyebrow">🎉 ¡Sorpresa para vos!</span>
+      <h2 id="upsellTitle">Descuento exclusivo en la versión <span class="hl">Premium</span></h2>
+      <p class="desc">Por solo <strong>$ 3.000 más</strong> (sumado a los $ 14.900 que ya elegiste), llevate la <strong>versión completa</strong> del kit con las 185 páginas y todos los bonus incluidos.</p>
+      <div class="upsell-price">
+        <span class="from">Antes $ 19.900</span>
+        <div class="price">$ 17.900 <small>ARS · pago único</small></div>
+        <span class="save">¡Ahorrás $ 2.000 (10%)!</span>
+      </div>
+      <!-- Poné acá el link de checkout del Premium con descuento -->
+      <a class="btn btn-primary btn-block" id="upsellAccept" href="#">Quiero la versión completa por $ 17.900</a>
+      <button class="upsell-decline" type="button" id="upsellDecline">No, gracias. Quiero solo la versión básica por $ 14.900.</button>
+    </div>
+  </div>
+
   <!-- Barra CTA fija (solo mobile) -->
   <div class="sticky-cta" id="stickyCta">
     <div class="p"><small>Kit Completo + Bonus</small><b>$ 19.900</b></div>
@@ -945,6 +985,37 @@
     };
     gallery.addEventListener('scroll', updateDots, { passive: true });
     updateDots();
+
+    // Modal upsell: al elegir Básico se ofrece el Premium con descuento
+    (function () {
+      const modal = document.getElementById('upsell');
+      const btnBasico = document.getElementById('btnBasico');
+      if (!modal || !btnBasico) return;
+      let lastFocus = null;
+      const abrir = () => {
+        lastFocus = document.activeElement;
+        modal.hidden = false;
+        requestAnimationFrame(() => modal.classList.add('show'));
+        document.body.style.overflow = 'hidden';
+        document.getElementById('upsellAccept').focus();
+      };
+      const cerrar = () => {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+        setTimeout(() => { modal.hidden = true; }, 300);
+        if (lastFocus) lastFocus.focus();
+      };
+      btnBasico.addEventListener('click', (e) => { e.preventDefault(); abrir(); });
+      document.getElementById('upsellClose').addEventListener('click', cerrar);
+      // "No, gracias": sigue al checkout del Básico
+      document.getElementById('upsellDecline').addEventListener('click', () => {
+        cerrar();
+        const href = btnBasico.getAttribute('href');
+        if (href && href !== '#') window.location.href = href;
+      });
+      modal.addEventListener('click', (e) => { if (e.target === modal) cerrar(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) cerrar(); });
+    })();
 
     // FAQ: al abrir una pregunta se cierran las demás
     const faqs = document.querySelectorAll('.faq details');
