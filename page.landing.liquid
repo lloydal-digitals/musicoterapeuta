@@ -215,13 +215,13 @@
     /* ---------- VOCES (testimonios con foto) ---------- */
     .voces { display: grid; gap: 1.5rem; max-width: 960px; margin: 0 auto; }
     @media (min-width: 768px) { .voces { grid-template-columns: 1fr 1fr; } }
-    .voz { display: grid; grid-template-columns: 112px 1fr; gap: 1.25rem; align-items: start; padding: 1.5rem; }
-    .voz img { width: 112px; height: 112px; object-fit: cover; border-radius: 50%; border: 4px solid var(--card); box-shadow: var(--shadow-card); }
+    .voz { display: grid; grid-template-columns: 160px 1fr; gap: 1.5rem; align-items: center; padding: 1.5rem; }
+    .voz img { width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 4px solid var(--card); box-shadow: var(--shadow-card); }
     .voz .stars { color: var(--honey); letter-spacing: .1em; font-size: .9rem; }
     .voz blockquote { margin: .5rem 0 0; font-family: var(--font-display); font-style: italic; font-size: 1.15rem; line-height: 1.45; }
     .voz cite { display: block; margin-top: .75rem; font-style: normal; font-weight: 800; }
     .voz cite small { display: block; color: var(--muted-fg); font-weight: 600; }
-    @media (max-width: 767px) { .voz { grid-template-columns: 80px 1fr; padding: 1.25rem; } .voz img { width: 80px; height: 80px; } }
+    @media (max-width: 767px) { .voz { grid-template-columns: 110px 1fr; padding: 1.25rem; } .voz img { width: 110px; height: 110px; } }
 
     /* ---------- PASOS ---------- */
     .step { text-align: center; padding: 2rem 1.5rem; }
