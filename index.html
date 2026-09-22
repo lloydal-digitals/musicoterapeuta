@@ -413,6 +413,20 @@
     @media (max-width: 767px) { .upsell-card { padding: 1.75rem 1.1rem 1.25rem; } .upsell-price .price { font-size: 2.1rem; } }
     @media (prefers-reduced-motion: reduce) { .upsell, .upsell-card { transition: none; } }
 
+    /* ---------- ORDER BUMPS (checkboxes) ---------- */
+    .bumps { margin-top: 1.25rem; display: grid; gap: .6rem; }
+    .bump { display: flex; gap: .85rem; align-items: flex-start; text-align: left; padding: .9rem 1rem; border: 2px dashed color-mix(in oklab, var(--clay) 45%, transparent); border-radius: var(--radius); background: color-mix(in oklab, var(--honey) 14%, #fff); cursor: pointer; transition: border-color .2s, background .2s; }
+    .bump:hover { border-color: var(--clay); }
+    .bump:has(input:checked) { border-style: solid; border-color: var(--clay); background: color-mix(in oklab, var(--honey) 28%, #fff); }
+    .bump input { width: 22px; height: 22px; margin: .15rem 0 0; accent-color: var(--clay); flex-shrink: 0; cursor: pointer; }
+    .bump b { display: block; font-size: 1rem; line-height: 1.3; }
+    .bump b em { font-style: normal; color: var(--clay); white-space: nowrap; }
+    .bump p { margin-top: .25rem; font-size: .88rem; color: var(--muted-fg); font-weight: 600; line-height: 1.4; }
+    .bump-sum { display: none; text-align: right; font-weight: 800; font-size: .95rem; color: var(--leaf); }
+    .bump-sum.show { display: block; }
+    .upsell-card .bumps { margin-top: 1rem; }
+    .plan .bumps + .btn { margin-top: 1rem; }
+
     /* ---------- FOCO / ACCESIBILIDAD ---------- */
     :focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; border-radius: 6px; }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -780,7 +794,7 @@
             <li>Acceso de por vida y actualizaciones</li>
           </ul>
           <div class="price">$ 14.900 <small>ARS · pago único</small></div>
-          <!-- Poné acá el link de checkout -->
+          <!-- El href se arma solo con los IDs de variante (ver CHECKOUT en el script) -->
           <a class="btn btn-outline btn-block" id="btnBasico" href="#">Elegir Básico</a>
         </div>
         <div class="plan featured reveal">
@@ -802,8 +816,25 @@
           <span class="from">Antes $ 49.900</span>
           <div class="price">$ 19.900 <small>ARS · pago único</small></div>
           <p class="installments">o 3 cuotas sin interés de $ 6.633</p>
-          <!-- Poné acá el link de checkout -->
-          <a class="btn btn-primary btn-block btn-lg" href="#">Quiero el Kit Completo</a>
+          <div class="bumps">
+            <label class="bump">
+              <input type="checkbox" class="bump-check" data-bump="audio" />
+              <span>
+                <b>🎧 Agregá las pistas de audio <em>por solo $ 4.900</em></b>
+                <p>Las canciones del kit grabadas en MP3, para escuchar y usar en clase sin leer partituras.</p>
+              </span>
+            </label>
+            <label class="bump">
+              <input type="checkbox" class="bump-check" data-bump="planificacion" />
+              <span>
+                <b>📝 Agregá la planificación anual editable <em>por solo $ 5.900</em></b>
+                <p>El año completo planificado, en Word y Canva, listo para poner tus datos y entregar a dirección.</p>
+              </span>
+            </label>
+            <p class="bump-sum" data-base="premium"></p>
+          </div>
+          <!-- El href se arma solo con los IDs de variante (ver CHECKOUT en el script) -->
+          <a class="btn btn-primary btn-block btn-lg" id="btnPremium" href="#">Quiero el Kit Completo</a>
           <p class="secure">🔒 7 días de garantía incondicional</p>
         </div>
       </div>
@@ -899,7 +930,23 @@
         <div class="price">$ 17.900 <small>ARS · pago único</small></div>
         <span class="save">¡Ahorrás $ 2.000 (10%)!</span>
       </div>
-      <!-- Poné acá el link de checkout del Premium con descuento -->
+      <div class="bumps">
+        <label class="bump">
+          <input type="checkbox" class="bump-check" data-bump="audio" />
+          <span>
+            <b>🎧 Agregá las pistas de audio <em>por solo $ 4.900</em></b>
+            <p>Las canciones del kit grabadas en MP3, para escuchar y usar en clase sin leer partituras.</p>
+          </span>
+        </label>
+        <label class="bump">
+          <input type="checkbox" class="bump-check" data-bump="planificacion" />
+          <span>
+            <b>📝 Agregá la planificación anual editable <em>por solo $ 5.900</em></b>
+            <p>El año completo planificado, en Word y Canva, listo para poner tus datos y entregar a dirección.</p>
+          </span>
+        </label>
+        <p class="bump-sum" data-base="premiumUpsell"></p>
+      </div>
       <a class="btn btn-primary btn-block" id="upsellAccept" href="#">Quiero la versión completa por $ 17.900</a>
       <button class="upsell-decline" type="button" id="upsellDecline">No, gracias. Quiero solo la versión básica por $ 14.900.</button>
     </div>
@@ -985,10 +1032,46 @@
     gallery.addEventListener('scroll', updateDots, { passive: true });
     updateDots();
 
+    // ---- Checkout y order bumps ----
+    // Completá con los IDs de variante de Shopify (Productos > producto > variante > número al final de la URL).
+    // Mientras estén vacíos, los botones no navegan (sirve para el preview).
+    // codigoUpsell: código de descuento que deja el Premium a $ 17.900 (se aplica solo desde el modal).
+    const CHECKOUT = { tienda: 'https://musicalizacioninfantil.com', basico: '', premium: '', codigoUpsell: '', bumps: { audio: '', planificacion: '' } };
+    const PRECIOS = { basico: 14900, premium: 19900, premiumUpsell: 17900, bumps: { audio: 4900, planificacion: 5900 } };
+    const fmt = (n) => '$ ' + n.toLocaleString('es-AR');
+    const linkCarrito = (variantes, codigo) => {
+      if (variantes.some((v) => !v)) return '#';
+      const cart = '/cart/' + variantes.map((v) => v + ':1').join(',');
+      return CHECKOUT.tienda + (codigo ? `/discount/${codigo}?redirect=${encodeURIComponent(cart)}` : cart);
+    };
+    const bumpChecks = [...document.querySelectorAll('.bump-check')];
+    const bumpsElegidos = () => [...new Set(bumpChecks.filter((c) => c.checked).map((c) => c.dataset.bump))];
+    const conBumps = (ids) => [...ids, ...bumpsElegidos().map((k) => CHECKOUT.bumps[k])];
+    const btnBasico = document.getElementById('btnBasico');
+    const btnPremium = document.getElementById('btnPremium');
+    const upsellAccept = document.getElementById('upsellAccept');
+    const actualizarCheckout = () => {
+      const elegidos = bumpsElegidos();
+      const extra = elegidos.reduce((t, k) => t + PRECIOS.bumps[k], 0);
+      btnBasico.href = linkCarrito(conBumps([CHECKOUT.basico]));
+      btnPremium.href = linkCarrito(conBumps([CHECKOUT.premium]));
+      upsellAccept.href = linkCarrito(conBumps([CHECKOUT.premium]), CHECKOUT.codigoUpsell);
+      upsellAccept.textContent = `Quiero la versión completa por ${fmt(PRECIOS.premiumUpsell + extra)}`;
+      document.querySelectorAll('.bump-sum').forEach((t) => {
+        t.textContent = `Total: ${fmt(PRECIOS[t.dataset.base] + extra)}`;
+        t.classList.toggle('show', elegidos.length > 0);
+      });
+    };
+    // Los checkboxes del plan y del modal van sincronizados por bump
+    bumpChecks.forEach((c) => c.addEventListener('change', () => {
+      bumpChecks.forEach((o) => { if (o.dataset.bump === c.dataset.bump) o.checked = c.checked; });
+      actualizarCheckout();
+    }));
+    actualizarCheckout();
+
     // Modal upsell: al elegir Básico se ofrece el Premium con descuento
     (function () {
       const modal = document.getElementById('upsell');
-      const btnBasico = document.getElementById('btnBasico');
       if (!modal || !btnBasico) return;
       let lastFocus = null;
       const abrir = () => {
@@ -996,7 +1079,7 @@
         modal.hidden = false;
         requestAnimationFrame(() => modal.classList.add('show'));
         document.body.style.overflow = 'hidden';
-        document.getElementById('upsellAccept').focus();
+        upsellAccept.focus();
       };
       const cerrar = () => {
         modal.classList.remove('show');
@@ -1006,7 +1089,7 @@
       };
       btnBasico.addEventListener('click', (e) => { e.preventDefault(); abrir(); });
       document.getElementById('upsellClose').addEventListener('click', cerrar);
-      // "No, gracias": sigue al checkout del Básico
+      // "No, gracias": sigue al checkout del Básico (con el bump si quedó tildado)
       document.getElementById('upsellDecline').addEventListener('click', () => {
         cerrar();
         const href = btnBasico.getAttribute('href');
