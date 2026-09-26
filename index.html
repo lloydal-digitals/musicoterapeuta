@@ -815,7 +815,8 @@
           </ul>
           <span class="from">Antes $ 49.900</span>
           <div class="price">$ 19.900 <small>ARS · pago único</small></div>
-          <p class="installments">o 3 cuotas sin interés de $ 6.633</p>
+          <!-- Order bumps: ocultos hasta tener listas las pistas de audio y la planificación anual.
+                 Para reactivarlos, sacá este comentario (y el de arriba del otro bloque).
           <div class="bumps">
             <label class="bump">
               <input type="checkbox" class="bump-check" data-bump="audio" />
@@ -833,6 +834,7 @@
             </label>
             <p class="bump-sum" data-base="premium"></p>
           </div>
+          -->
           <!-- El href se arma solo con los IDs de variante (ver CHECKOUT en el script) -->
           <a class="btn btn-primary btn-block btn-lg" id="btnPremium" href="#">Quiero el Kit Completo</a>
           <p class="secure">🔒 7 días de garantía incondicional</p>
@@ -930,6 +932,8 @@
         <div class="price">$ 17.900 <small>ARS · pago único</small></div>
         <span class="save">¡Ahorrás $ 2.000 (10%)!</span>
       </div>
+      <!-- Order bumps: ocultos hasta tener listas las pistas de audio y la planificación anual.
+             Para reactivarlos, sacá este comentario (y el de arriba del otro bloque).
       <div class="bumps">
         <label class="bump">
           <input type="checkbox" class="bump-check" data-bump="audio" />
@@ -947,6 +951,7 @@
         </label>
         <p class="bump-sum" data-base="premiumUpsell"></p>
       </div>
+      -->
       <a class="btn btn-primary btn-block" id="upsellAccept" href="#">Quiero la versión completa por $ 17.900</a>
       <button class="upsell-decline" type="button" id="upsellDecline">No, gracias. Quiero solo la versión básica por $ 14.900.</button>
     </div>
