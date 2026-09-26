@@ -1039,10 +1039,10 @@
     updateDots();
 
     // ---- Checkout y order bumps ----
-    // Completá con los IDs de variante de Shopify (Productos > producto > variante > número al final de la URL).
-    // Mientras estén vacíos, los botones no navegan (sirve para el preview).
-    // codigoUpsell: código de descuento que deja el Premium a $ 17.900 (se aplica solo desde el modal).
-    const CHECKOUT = { tienda: 'https://musicalizacioninfantil.com', basico: '', premium: '', codigoUpsell: '', bumps: { audio: '', planificacion: '' } };
+    // IDs de variante de Shopify (no los del producto). tienda: vacío = links relativos,
+    // así funcionan tanto en .myshopify.com como con el dominio propio.
+    // codigoUpsell: descuento de $ 2.000 sobre el Premium, se aplica solo desde el modal.
+    const CHECKOUT = { tienda: '', basico: '47734417522772', premium: '47734419619924', codigoUpsell: 'COMPLETO10', bumps: { audio: '', planificacion: '' } };
     const PRECIOS = { basico: 14900, premium: 19900, premiumUpsell: 17900, bumps: { audio: 4900, planificacion: 5900 } };
     const fmt = (n) => '$ ' + n.toLocaleString('es-AR');
     const linkCarrito = (variantes, codigo) => {
