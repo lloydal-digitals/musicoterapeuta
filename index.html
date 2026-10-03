@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Musicalización Infantil: Material Listo para Docentes, Musicoterapeutas y Familias</title>
-  <meta name="description" content="Kit completo de musicalización infantil para docentes, musicoterapeutas y familias. Actividades, juegos e imprimibles listos, organizados y con intención pedagógica." />
-  <meta property="og:title" content="Musicalización Infantil: Material Listo y Organizado" />
-  <meta property="og:description" content="Para docentes, musicoterapeutas y familias que quieren trabajar la música con propósito, sin inventar actividades a último momento." />
+  <title>Kit de Musicalización Infantil: 36 Actividades Listas para tus Clases</title>
+  <meta name="description" content="36 actividades musicales para nenes de 2 a 8 años, cada una con su objetivo, su paso a paso y qué observar. 185 páginas listas para imprimir y aplicar en tus clases." />
+  <meta property="og:title" content="36 actividades musicales listas para tus clases" />
+  <meta property="og:description" content="Dejá de improvisar las clases de música: 36 actividades con objetivo, paso a paso y qué observar. Para nenes de 2 a 8 años." />
   <meta property="og:type" content="website" />
   <!-- Idealmente una imagen 1200x630 subida al mismo CDN -->
   <meta property="og:image" content="img/hero-mockup.webp" />
@@ -39,8 +39,8 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-    @media (max-width: 899px) { html { scroll-padding-top: 64px; } }
+    html { scroll-behavior: smooth; scroll-padding-top: 104px; }
+    @media (max-width: 899px) { html { scroll-padding-top: 96px; } }
     @media (max-width: 899px) { body { padding-bottom: 80px; } }
     body {
       margin: 0;
@@ -128,11 +128,11 @@
 
     /* ---------- HERO ---------- */
     .hero { padding: 2rem 0 3.5rem; position: relative; overflow: hidden; }
-    @media (min-width: 768px) { .hero { padding: 4rem 0 8rem; } }
+    @media (min-width: 768px) { .hero { padding: 3rem 0 6rem; } }
     .hero .container { display: grid; gap: 2rem; align-items: center; }
     @media (min-width: 768px) { .hero .container { gap: 3rem; } }
     @media (min-width: 900px) { .hero .container { grid-template-columns: 1.1fr .9fr; } }
-    .hero h1 { font-size: clamp(2.3rem, 5.2vw, 3.9rem); font-weight: 800; }
+    .hero h1 { font-size: clamp(2.3rem, 4.2vw, 3.2rem); font-weight: 800; }
     .hero .lead { margin-top: 1.5rem; font-size: 1.2rem; color: var(--muted-fg); max-width: 560px; }
     .hero .lead strong { color: var(--cocoa); }
     .hero .actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
@@ -141,8 +141,8 @@
     .trust li::before { content: "✓"; color: var(--leaf); font-weight: 900; }
     .social-stat { display: inline-flex; align-items: center; gap: .9rem; margin-top: 2rem; background: var(--card); padding: .75rem 1.25rem .75rem .75rem; border-radius: 999px; box-shadow: var(--shadow-card); }
     .avatars { display: flex; }
-    .avatars span { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #fff; margin-left: -10px; display: grid; place-items: center; font-size: 1rem; background: var(--sand); }
-    .avatars span:first-child { margin-left: 0; }
+    .avatars span, .avatars img { object-fit: cover; width: 36px; height: 36px; border-radius: 50%; border: 2px solid #fff; margin-left: -10px; display: grid; place-items: center; font-size: 1rem; background: var(--sand); }
+    .avatars > :first-child { margin-left: 0; }
     .social-stat b { display: block; font-size: 1rem; }
     .social-stat small { color: var(--muted-fg); font-weight: 600; }
     .hero-visual { position: relative; }
@@ -151,36 +151,10 @@
     .blob-1 { width: 320px; height: 320px; background: var(--honey); top: -80px; right: -60px; }
     .blob-2 { width: 260px; height: 260px; background: var(--clay); bottom: -100px; left: -80px; opacity: .25; }
 
-    /* ---------- DOLOR ---------- */
-    .dor .container { display: grid; gap: 3rem; align-items: center; }
-    @media (min-width: 900px) { .dor .container { grid-template-columns: .9fr 1.1fr; } }
-    .dor h2 { font-size: clamp(2rem, 4vw, 3rem); }
-    .pain { margin-top: 2rem; display: grid; gap: 1rem; }
-    .pain li { display: flex; gap: 1rem; align-items: flex-start; background: var(--cream); border: 1px solid var(--border); padding: 1rem 1.25rem; border-radius: var(--radius); font-weight: 600; }
-    .pain li::before { content: "✕"; color: var(--clay); font-weight: 900; flex-shrink: 0; margin-top: .1rem; }
-    .transition-line { margin-top: 2.5rem; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--clay); }
-
-    /* ---------- SOLUCIÓN ---------- */
-    .solucao .container { display: grid; gap: 3rem; align-items: center; }
-    @media (min-width: 900px) { .solucao .container { grid-template-columns: 1fr 1fr; } }
-    .solucao h2 { font-size: clamp(2rem, 4vw, 3rem); }
-    .solucao .desc { margin-top: 1.5rem; font-size: 1.15rem; color: var(--muted-fg); }
-    .solucao .desc strong { color: var(--cocoa); }
-    .pillars { margin-top: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .pillars li { text-align: center; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem .5rem; box-shadow: var(--shadow-card); }
-    .pillars .ico { font-size: 1.8rem; }
-    .pillars b { display: block; margin-top: .5rem; font-family: var(--font-display); font-size: 1.1rem; }
-
-    /* ---------- BENEFICIOS ---------- */
-    .benefit { padding: 1.25rem; overflow: hidden; transition: transform .25s ease; }
-    .benefit:hover { transform: translateY(-4px); }
-    .benefit .ph, .benefit .pic { border-radius: var(--radius); }
-    .benefit h3 { margin-top: 1.1rem; font-size: 1.35rem; }
-    .benefit p { margin-top: .5rem; color: var(--muted-fg); }
-
     /* ---------- QUÉ RECIBÍS ---------- */
     .recebe .container { display: grid; gap: 3rem; align-items: center; }
     @media (min-width: 900px) { .recebe .container { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 899px) { .recebe .container > div:last-child { order: -1; } }
     .recebe h2 { font-size: clamp(2rem, 4vw, 3rem); }
     .stat-big { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
     .stat-big div { flex: 1 1 140px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; box-shadow: var(--shadow-card); }
@@ -200,17 +174,6 @@
     @media (min-width: 1024px) { .gallery > div { flex: 0 0 calc(33.333% - .7rem); } }
     .gallery .ph, .gallery .pic { box-shadow: var(--shadow-card); aspect-ratio: 4 / 3; }
 
-    /* ---------- PRUEBA SOCIAL ---------- */
-    .prova .container { display: grid; gap: 3rem; align-items: center; }
-    @media (min-width: 900px) { .prova .container { grid-template-columns: 1fr 1fr; } }
-    .prova h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
-    .prova .desc { margin-top: 1.25rem; font-size: 1.1rem; color: var(--muted-fg); }
-    .testimonials { margin-top: 2rem; display: grid; gap: 1rem; }
-    .testimonials li { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; box-shadow: var(--shadow-card); }
-    .testimonials .stars { color: var(--honey); letter-spacing: .1em; font-size: .9rem; }
-    .testimonials p { margin-top: .4rem; font-weight: 600; }
-    .testimonials small { display: block; margin-top: .5rem; color: var(--muted-fg); font-weight: 700; }
-
     /* ---------- VOCES (testimonios con foto) ---------- */
     .voces { display: grid; gap: 1.5rem; max-width: 960px; margin: 0 auto; }
     @media (min-width: 768px) { .voces { grid-template-columns: 1fr 1fr; } }
@@ -221,12 +184,6 @@
     .voz cite { display: block; margin-top: .75rem; font-style: normal; font-weight: 800; }
     .voz cite small { display: block; color: var(--muted-fg); font-weight: 600; }
     @media (max-width: 767px) { .voz { grid-template-columns: 110px 1fr; padding: 1.25rem; } .voz img { width: 110px; height: 110px; } }
-
-    /* ---------- PASOS ---------- */
-    .step { text-align: center; padding: 2rem 1.5rem; }
-    .step .num { width: 64px; height: 64px; margin: 0 auto; border-radius: 50%; display: grid; place-items: center; background-image: var(--gradient-cta); color: #fff; font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; box-shadow: var(--shadow-warm); }
-    .step h3 { margin-top: 1.25rem; font-size: 1.5rem; }
-    .step p { margin-top: .5rem; color: var(--muted-fg); }
 
     /* ---------- ANTES / DESPUÉS ---------- */
     .compare { padding: 2rem; }
@@ -248,6 +205,7 @@
     /* ---------- OFERTA ---------- */
     .plans { display: grid; gap: 1.5rem; max-width: 900px; margin: 0 auto; align-items: stretch; }
     @media (min-width: 800px) { .plans { grid-template-columns: 1fr 1.15fr; } }
+    @media (max-width: 799px) { .plan.featured { order: -1; } }
     .plan { background: var(--card); color: var(--cocoa); border-radius: calc(var(--radius) * 1.5); padding: 2rem; display: flex; flex-direction: column; position: relative; }
     .plan.featured { border: 3px solid var(--honey); box-shadow: 0 30px 80px -20px rgba(0,0,0,.5); }
     .plan .ribbon { position: absolute; top: -1rem; left: 50%; transform: translateX(-50%); background-image: var(--gradient-cta); color: #fff; font-weight: 800; padding: .4rem 1.2rem; border-radius: 999px; font-size: .9rem; white-space: nowrap; }
@@ -280,12 +238,6 @@
     .cta-final p { margin-top: 1.25rem; font-size: 1.2rem; color: var(--muted-fg); }
     .cta-final .btn { margin-top: 2rem; }
     .cta-final .fine { margin-top: 1.25rem; font-size: .9rem; font-weight: 700; }
-
-    /* ---------- OBJECIONES ---------- */
-    .objecao { padding: 1.75rem; }
-    .objecao h3 { font-size: 1.25rem; display: flex; gap: .6rem; align-items: flex-start; }
-    .objecao h3::before { content: "“"; color: var(--clay); font-size: 2rem; line-height: .8; }
-    .objecao p { margin-top: .75rem; color: var(--muted-fg); }
 
     /* ---------- FAQ ---------- */
     .faq { max-width: 760px; margin: 0 auto; display: grid; gap: .75rem; }
@@ -329,12 +281,6 @@
     @media (min-width: 900px) { .sticky-cta { display: none; } }
 
 
-    /* ---------- PARA QUIÉN ---------- */
-    .audience { padding: 2rem; text-align: center; }
-    .audience .ico { width: 72px; height: 72px; margin: 0 auto; border-radius: 20px; display: grid; place-items: center; font-size: 2rem; background: color-mix(in oklab, var(--honey) 30%, var(--cream)); }
-    .audience h3 { margin-top: 1.25rem; font-size: 1.4rem; }
-    .audience p { margin-top: .6rem; color: var(--muted-fg); }
-
     /* ---------- CARRUSEL ---------- */
     .carousel { position: relative; }
     .carousel .gallery { scrollbar-width: none; }
@@ -357,7 +303,7 @@
       .blob-1 { width: 220px; height: 220px; }
       .blob-2 { display: none; }
       .eyebrow { font-size: .72rem; margin-bottom: 1rem; }
-      .dor .container, .solucao .container, .recebe .container, .prova .container { gap: 2rem; }
+      .recebe .container { gap: 2rem; }
       .pain { gap: .6rem; margin-top: 1.5rem; }
       .pain li { padding: .8rem 1rem; font-size: .95rem; }
       .transition-line { margin-top: 1.75rem; font-size: 1.3rem; }
@@ -383,13 +329,13 @@
     }
 
     /* ---------- AVISO DE COMPRA RECIENTE ---------- */
-    .buy-toast { position: fixed; top: 72px; left: 1rem; z-index: 49; max-width: 340px; display: flex; align-items: center; gap: .75rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: .5rem 1rem .5rem .5rem; box-shadow: var(--shadow-card); font-size: .85rem; line-height: 1.3; opacity: 0; transform: translateY(-12px); pointer-events: none; transition: opacity .35s ease, transform .35s ease; }
+    .buy-toast { position: fixed; top: 106px; left: 1rem; z-index: 49; max-width: 340px; display: flex; align-items: center; gap: .75rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: .5rem 1rem .5rem .5rem; box-shadow: var(--shadow-card); font-size: .85rem; line-height: 1.3; opacity: 0; transform: translateY(-12px); pointer-events: none; transition: opacity .35s ease, transform .35s ease; }
     .buy-toast.show { opacity: 1; transform: none; pointer-events: auto; }
     .buy-toast .av { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background-image: var(--gradient-cta); color: #fff; font-weight: 800; font-size: .95rem; flex-shrink: 0; }
     .buy-toast b { color: var(--cocoa); }
     .buy-toast small { display: block; color: var(--muted-fg); font-weight: 700; font-size: .75rem; }
     .buy-toast .x { border: 0; background: none; color: var(--muted-fg); font-size: 1.1rem; cursor: pointer; padding: 0 .1rem; line-height: 1; }
-    @media (max-width: 899px) { .buy-toast { top: 64px; left: .75rem; right: .75rem; max-width: none; } }
+    @media (max-width: 899px) { .buy-toast { top: 98px; left: .75rem; right: .75rem; max-width: none; } }
 
     /* ---------- MODAL UPSELL (al elegir Básico) ---------- */
     .upsell { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 1rem; background: color-mix(in oklab, oklch(30% .14 25) 70%, transparent); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s; }
@@ -427,6 +373,32 @@
     .upsell-card .bumps { margin-top: 1rem; }
     .plan .bumps + .btn { margin-top: 1rem; }
 
+    /* ---------- URGENCIA (barra superior, hero y oferta) ---------- */
+    .urgency-bar { background-image: var(--gradient-deep); color: var(--cream); text-align: center; font-size: .85rem; font-weight: 700; line-height: 1.3; padding: .45rem 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .urgency-bar b { color: var(--honey); }
+    .countdown { font-variant-numeric: tabular-nums; }
+    .hero-offer { margin-top: 1.75rem; max-width: 460px; background: var(--card); border: 2px solid color-mix(in oklab, var(--honey) 70%, transparent); border-radius: calc(var(--radius) * 1.5); padding: 1.1rem 1.25rem 1.25rem; box-shadow: var(--shadow-card); }
+    .hero-offer-top { display: flex; justify-content: space-between; align-items: center; gap: .75rem; flex-wrap: wrap; font-weight: 700; font-size: .9rem; color: var(--muted-fg); }
+    .hero-offer-top b { color: var(--clay); font-size: 1.05rem; }
+    .hero-offer .tag { background: color-mix(in oklab, var(--clay) 12%, transparent); color: var(--clay); font-weight: 800; padding: .25rem .7rem; border-radius: 999px; }
+    .hero-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: .25rem .75rem; margin-top: .6rem; }
+    .hero-price s { color: var(--muted-fg); font-weight: 700; }
+    .hero-price b { font-family: var(--font-display); font-size: 2.4rem; font-weight: 800; line-height: 1; }
+    .hero-price small { flex-basis: 100%; color: var(--muted-fg); font-weight: 700; }
+    .hero-offer .btn { margin-top: 1rem; }
+    .offer-timer { display: inline-flex; flex-direction: column; align-items: center; gap: .15rem; margin-top: 1.5rem; padding: 1rem 1.75rem; border-radius: calc(var(--radius) * 1.25); background: color-mix(in oklab, var(--cream) 10%, transparent); border: 1px solid color-mix(in oklab, var(--honey) 40%, transparent); }
+    .offer-timer b { font-family: var(--font-display); font-size: 2.4rem; color: var(--honey); line-height: 1.1; }
+    .offer-timer small { font-weight: 700; color: color-mix(in oklab, var(--cream) 80%, transparent); }
+    .offer-timer [data-hoy] { color: var(--cream); }
+    .cta-final .eyebrow b { margin-left: .25rem; }
+
+    /* ---------- CADA ACTIVIDAD TRAE ---------- */
+    .incluye-title { margin-top: 2rem; font-size: 1.35rem; }
+    .incluye { margin-top: 1rem; display: grid; gap: .6rem; }
+    .incluye li { display: flex; gap: .75rem; align-items: flex-start; font-weight: 600; }
+    .incluye li::before { content: "✓"; color: var(--leaf); font-weight: 900; }
+    .section-cta { text-align: center; margin-top: 2rem; }
+
     /* ---------- FOCO / ACCESIBILIDAD ---------- */
     :focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; border-radius: 6px; }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -443,12 +415,14 @@
 
   <!-- ===================== HEADER ===================== -->
   <header class="site-header">
+    <!-- Barra de urgencia: la cuenta regresiva termina a las 23:59 (hora de Argentina) -->
+    <div class="urgency-bar">🔥 <b>Oferta solo por hoy</b> · termina en <b class="countdown" data-countdown>--:--:--</b></div>
     <div class="container">
       <a class="brand" href="#"><span>🎵</span><em>Musicalización Encantada</em></a>
       <nav class="site-nav" aria-label="Secciones">
-        <a href="#solucion">El kit</a>
         <a href="#que-recibis">Qué incluye</a>
-        <a href="#para-quien">Para quién</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#bonus">Bonus</a>
         <a href="#faq">Preguntas</a>
       </nav>
       <a class="btn btn-primary" href="#oferta">Quiero el kit</a>
@@ -468,20 +442,24 @@
     <div class="blob blob-2"></div>
     <div class="container">
       <div>
-        <span class="eyebrow">🎵 Material Listo • Acceso Inmediato</span>
-        <h1>Música en la Educación Inicial <span class="hl">de forma lúdica, organizada y con propósito</span></h1>
-        <p class="lead">Para <strong>docentes, musicoterapeutas y familias</strong> que quieren llevar actividades musicales con intención al aula, al consultorio o a casa, sin improvisar a último momento y sin sobrecarga.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#oferta">Quiero el material ahora</a>
-          <a class="btn btn-outline" href="#que-recibis">Ver actividades</a>
+        <span class="eyebrow">🎵 Para docentes • Nenes de 2 a 8 años</span>
+        <h1>Dejá de improvisar tus clases de música. <span class="hl">36 actividades listas para aplicar.</span></h1>
+        <p class="lead">Cada actividad trae <strong>su objetivo, su paso a paso y qué observar</strong>. La imprimís y das la clase, sin pasar el domingo a la noche buscando ideas sueltas.</p>
+        <div class="hero-offer">
+          <div class="hero-offer-top">
+            <span class="tag">🔥 Solo por hoy</span>
+            <span>Termina en <b class="countdown" data-countdown>--:--:--</b></span>
+          </div>
+          <div class="hero-price"><s>$ 49.900</s><b>$ 19.900</b><small>Kit completo + 3 bonus</small></div>
+          <a class="btn btn-primary btn-block" href="#oferta">Quiero el kit ahora</a>
         </div>
         <ul class="trust">
-          <li>Acceso de por vida</li>
-          <li>Listo para imprimir</li>
+          <li>185 páginas</li>
+          <li>Acceso inmediato y de por vida</li>
           <li>7 días de garantía</li>
         </ul>
         <div class="social-stat">
-          <div class="avatars"><span>👩‍🏫</span><span>🧑‍⚕️</span><span>👩‍👧</span><span>🧑‍🏫</span></div>
+          <div class="avatars"><img src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/clienta1.webp?v=1790037185" alt="" width="36" height="36" /><img src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/diego.png?v=1787424938" alt="" width="36" height="36" /><img src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/clienta2.webp?v=1790037185" alt="" width="36" height="36" /><img src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/matias.png?v=1787424938" alt="" width="36" height="36" /><img src="https://cdn.shopify.com/s/files/1/0696/8495/3172/files/fernando.png?v=1787425380" alt="" width="36" height="36" /></div>
           <div><b>+5.000 educadores</b><small>ya lo usan en sus clases</small></div>
         </div>
       </div>
@@ -491,136 +469,34 @@
     </div>
   </section>
 
-  <!-- ===================== DOLOR ===================== -->
-  <section class="dor bg-card">
-    <div class="container">
-      <div class="reveal">
-        <img class="pic ph-1x1" src="img/dolor-docente.webp" alt="Docente cansada rodeada de papeles y planificaciones" width="800" height="800" loading="lazy" />
-      </div>
-      <div class="reveal">
-        <span class="eyebrow">¿Te reconocés?</span>
-        <h2>Trabajar la música se volvió una <span class="hl">carrera sin final</span></h2>
-        <ul class="pain">
-          <li>Querés enseñar música con intención, pero terminás improvisando actividades sueltas</li>
-          <li>Pasás horas en Pinterest y en grupos buscando ideas que tengan sentido pedagógico</li>
-          <li>Sentís que falta una secuencia organizada, algo con principio, desarrollo y cierre</li>
-          <li>Terminás el día sin energía para planificar la próxima clase o sesión</li>
-          <li>Sabés lo que la música aporta al desarrollo infantil, pero no sabés por dónde empezar</li>
-        </ul>
-        <p class="transition-line">¿Y si un solo material te resolviera todo eso?</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== SOLUCIÓN ===================== -->
-  <section id="solucion" class="solucao bg-cream">
-    <div class="container">
-      <div class="reveal">
-        <span class="eyebrow">La solución que esperabas</span>
-        <h2>Todo listo.<br>Todo organizado.<br><span class="hl">Todo probado.</span></h2>
-        <p class="desc">Conocé el <strong>Kit Musicalización Encantada</strong>: un material creado para <strong>docentes de Educación Inicial, musicoterapeutas y familias</strong> que quieren aplicar actividades musicales organizadas, divertidas y con un objetivo pedagógico claro.</p>
-        <ul class="pillars">
-          <li><span class="ico">✅</span><b>Listo</b></li>
-          <li><span class="ico">✨</span><b>Fácil</b></li>
-          <li><span class="ico">🗂️</span><b>Organizado</b></li>
-        </ul>
-      </div>
-      <div class="reveal">
-        <img class="pic pic-tall" src="img/mockup-completo.webp" alt="Material completo del kit, en PDF e impreso" width="941" height="1672" loading="lazy" />
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== BENEFICIOS ===================== -->
-  <section class="bg-warm">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Transformación real</span>
-        <h2>Lo que la música hace por <span class="hl">cada niño y niña</span></h2>
-        <p>La música con intención desarrolla a la infancia de forma integral: en la escuela, en el consultorio y en casa.</p>
-      </div>
-      <div class="grid grid-3">
-        <article class="card benefit reveal">
-          <img class="pic ph-1x1" src="img/beneficio-coordinacion.webp" alt="Niño tocando un xilófono" width="800" height="808" loading="lazy" />
-          <h3>Coordinación Motriz</h3>
-          <p>Ritmo y movimiento que trabajan el cuerpo mientras juegan.</p>
-        </article>
-        <article class="card benefit reveal">
-          <img class="pic ph-1x1" src="img/beneficio-creatividad.webp" alt="Niña dibujando notas musicales" width="800" height="800" loading="lazy" />
-          <h3>Creatividad Sin Límites</h3>
-          <p>Cada sonido es una invitación a imaginar, inventar y expresarse.</p>
-        </article>
-        <article class="card benefit reveal">
-          <img class="pic ph-1x1" src="img/beneficio-lenguaje.webp" alt="Niño cantando" width="800" height="800" loading="lazy" />
-          <h3>Lenguaje &amp; Habla</h3>
-          <p>Cantar amplía el vocabulario y estimula las áreas del habla.</p>
-        </article>
-        <article class="card benefit reveal">
-          <img class="pic ph-1x1" src="img/beneficio-socializacion.webp" alt="Niños haciendo música en grupo" width="1254" height="1254" loading="lazy" />
-          <h3>Socialización</h3>
-          <p>Dinámicas grupales que enseñan escucha, empatía y cooperación.</p>
-        </article>
-        <article class="card benefit reveal">
-          <img class="pic ph-1x1" src="img/beneficio-atencion.webp" alt="Niña concentrada siguiendo un patrón musical" width="1254" height="1254" loading="lazy" />
-          <h3>Atención &amp; Memoria</h3>
-          <p>Los patrones musicales ejercitan el foco y la memoria de forma natural.</p>
-        </article>
-        <article class="card benefit reveal">
-          <img class="pic ph-1x1" src="img/beneficio-vinculo.webp" alt="Adulto y niño compartiendo un momento musical" width="1254" height="1254" loading="lazy" />
-          <h3>Emoción &amp; Vínculo</h3>
-          <p>La música acerca al adulto y al niño y crea lazos que duran toda la vida.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== PARA QUIÉN ===================== -->
-  <section id="para-quien" class="bg-card">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">¿Para quién es?</span>
-        <h2>Un mismo material, <span class="hl">tres espacios</span> donde hacer música</h2>
-      </div>
-      <div class="grid grid-3">
-        <article class="card audience reveal">
-          <div class="ico">👩‍🏫</div>
-          <h3>Docentes</h3>
-          <p>Planificaciones listas para la sala, con secuencia y objetivos claros para cada actividad.</p>
-        </article>
-        <article class="card audience reveal">
-          <div class="ico">🧑‍⚕️</div>
-          <h3>Musicoterapeutas</h3>
-          <p>Propuestas adaptables a sesiones individuales o grupales, pensadas desde el desarrollo infantil.</p>
-        </article>
-        <article class="card audience reveal">
-          <div class="ico">👩‍👧</div>
-          <h3>Familias</h3>
-          <p>Juegos musicales simples para compartir en casa, sin necesidad de saber música.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== QUÉ RECIBÍS ===================== -->
   <section id="que-recibis" class="recebe bg-card">
     <div class="container">
       <div class="reveal">
         <img class="pic" src="img/detalles-material.webp" alt="Detalle de las páginas, tarjetas y juegos del kit" width="800" height="447" loading="lazy" />
-      </div>
-      <div class="reveal">
-        <span class="eyebrow">Qué recibís</span>
-        <h2>Un <span class="hl">universo musical</span> en tus manos</h2>
-        <div class="stat-big">
-          <div><b>185</b><span>páginas</span></div>
-          <div><b>30+</b><span>actividades listas</span></div>
-        </div>
         <ul class="tang">
           <li><img class="pic" src="img/tarjetas-musicales.webp" alt="" width="512" height="512" loading="lazy" />Tarjetas musicales</li>
           <li><img class="pic" src="img/juegos-imprimibles.webp" alt="" width="512" height="512" loading="lazy" />Juegos imprimibles</li>
           <li><img class="pic" src="img/partituras-ilustradas.webp" alt="" width="512" height="512" loading="lazy" />Partituras ilustradas</li>
           <li><img class="pic" src="img/actividades-paso-paso.webp" alt="" width="512" height="512" loading="lazy" />Actividades paso a paso</li>
         </ul>
-        <blockquote class="quote">"Es como abrir una caja de tesoros: en cada página, una clase esperando a suceder."</blockquote>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Qué recibís</span>
+        <h2>Mirá exactamente <span class="hl">lo que te llevás</span></h2>
+        <div class="stat-big">
+          <div><b>36</b><span>actividades listas</span></div>
+          <div><b>185</b><span>páginas</span></div>
+          <div><b>3</b><span>bonus de regalo</span></div>
+        </div>
+        <h3 class="incluye-title">Cada actividad trae:</h3>
+        <ul class="incluye">
+          <li><b>Objetivo</b> claro, para saber qué estás trabajando</li>
+          <li><b>Duración y materiales</b> (casi todas sin materiales especiales)</li>
+          <li><b>Paso a paso</b>: apertura, desarrollo y cierre</li>
+          <li><b>Variantes por edad</b>: 2–3, 4–5 y 6–8 años</li>
+          <li><b>Qué observar</b> en cada nene mientras juega</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -645,30 +521,14 @@
         <button class="carousel-btn next" type="button" aria-label="Siguiente">›</button>
         <div class="dots" id="dots" aria-hidden="true"></div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===================== PRUEBA SOCIAL ===================== -->
-  <section class="prova bg-sand">
-    <div class="container">
-      <div class="reveal">
-        <span class="eyebrow">Aplicado en escuelas reales</span>
-        <h2>Para <span class="hl">cada lugar</span> donde hay un niño</h2>
-        <p class="desc">Salas de Educación Inicial, consultorios de musicoterapia, espacios terapéuticos y, nuestro favorito, la alfombra del living de casa. Donde hay ganas de cuidar y acompañar el desarrollo, hay lugar para la música.</p>
-        <ul class="testimonials">
-          <li><div class="stars">★★★★★</div><p>"En pocos días mi sala ya cantaba las canciones en casa. Las familias quedaron encantadas."</p><small>Mariana, docente</small></li>
-          <li><div class="stars">★★★★★</div><p>"Lo uso en sesiones con niños dentro del espectro autista y los resultados me sorprendieron."</p><small>Carla, musicoterapeuta</small></li>
-          <li><div class="stars">★★★★★</div><p>"Mi hija pide jugar a la música todos los días. Se volvió nuestro momento."</p><small>Julia, mamá de Lía (4)</small></li>
-        </ul>
-      </div>
-      <div class="reveal">
-        <img class="pic" src="img/prueba-aula.webp" alt="Niños en el aula usando el material de musicalización" width="800" height="450" loading="lazy" />
+      <div class="section-cta reveal">
+        <a class="btn btn-primary btn-lg" href="#oferta">Quiero el kit por $ 19.900</a>
       </div>
     </div>
   </section>
 
   <!-- ===================== VOCES ===================== -->
-  <section class="bg-cream">
+  <section id="opiniones" class="bg-cream">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Lo que dicen</span>
@@ -695,48 +555,30 @@
     </div>
   </section>
 
-
-  <!-- ===================== PASOS ===================== -->
-  <section class="bg-cream">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Así de simple</span>
-        <h2>3 pasos hasta tu <span class="hl">primera clase</span></h2>
-      </div>
-      <div class="grid grid-3">
-        <article class="card step reveal"><div class="num">1</div><h3>Descargá</h3><p>Acceso inmediato después de confirmar el pago. Todo en PDF, separado por temas.</p></article>
-        <article class="card step reveal"><div class="num">2</div><h3>Imprimí</h3><p>En casa, en la escuela o en cualquier imprenta. Sale listo para usar.</p></article>
-        <article class="card step reveal"><div class="num">3</div><h3>Aplicá</h3><p>Seguí el paso a paso de cada actividad y mirá cómo se enganchan los chicos.</p></article>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== ANTES / DESPUÉS ===================== -->
   <section class="bg-card">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Sentí la diferencia</span>
-        <h2>Antes y después del <span class="hl">Kit</span></h2>
+        <h2>Tu semana, <span class="hl">antes y después del kit</span></h2>
       </div>
       <div class="grid grid-2">
         <div class="card compare bad reveal">
           <h3>😩 Sin el kit</h3>
           <ul>
-            <li>Actividades improvisadas, sin secuencia</li>
-            <li>Horas perdidas investigando y planificando</li>
-            <li>Inseguridad a la hora de trabajar la música</li>
+            <li>Domingo a la noche buscando ideas en Pinterest y grupos</li>
+            <li>Actividades sueltas, sin secuencia ni objetivo</li>
+            <li>Inseguridad si no sos profe de música</li>
             <li>Chicos dispersos, poco comprometidos</li>
-            <li>Cansancio al final del día y resultados poco claros</li>
           </ul>
         </div>
         <div class="card compare good reveal">
           <h3>🎉 Con el kit</h3>
           <ul>
-            <li>Actividades listas, con secuencia pedagógica</li>
-            <li>Solo imprimir y aplicar</li>
-            <li>Instrucciones claras que cualquier adulto puede seguir</li>
+            <li>Abrís el PDF y la clase del lunes ya está resuelta</li>
+            <li>Actividades organizadas por edad y eje, con objetivo</li>
+            <li>Instrucciones claras, no hace falta saber música</li>
             <li>Chicos encantados y participando</li>
-            <li>Más tiempo libre y clases que funcionan de verdad</li>
           </ul>
         </div>
       </div>
@@ -744,12 +586,12 @@
   </section>
 
   <!-- ===================== BONUS ===================== -->
-  <section class="bg-warm">
+  <section id="bonus" class="bg-warm">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">🎁 Bonus exclusivos</span>
-        <h2>Además te llevás <span class="hl">3 bonus</span> especiales</h2>
-        <p>Solo en la versión Premium. Disponibles por tiempo limitado.</p>
+        <span class="eyebrow">🎁 Bonus de regalo</span>
+        <h2>Si comprás hoy, te llevás <span class="hl">3 bonus gratis</span></h2>
+        <p>Incluidos en la versión Premium, solo con la oferta de hoy.</p>
       </div>
       <div class="grid grid-3">
         <article class="card bonus reveal">
@@ -781,8 +623,13 @@
   <section id="oferta" class="bg-deep">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">💎 Elegí tu plan</span>
-        <h2>Empezá tu camino <span class="hl">musical</span></h2>
+        <span class="eyebrow">🔥 Oferta solo por hoy</span>
+        <h2>Elegí tu kit <span class="hl">al precio de hoy</span></h2>
+        <div class="offer-timer">
+          <small>El precio de hoy termina en</small>
+          <b class="countdown" data-countdown>--:--:--</b>
+          <small>Válido solo hoy, <span data-hoy></span></small>
+        </div>
       </div>
       <div class="plans">
         <div class="plan reveal">
@@ -790,7 +637,7 @@
           <h3>Kit Actividades</h3>
           <p class="sub">Solo las actividades musicales</p>
           <ul>
-            <li>30+ actividades musicales organizadas</li>
+            <li>36 actividades musicales con paso a paso</li>
             <li>Acceso de por vida y actualizaciones</li>
           </ul>
           <div class="price">$ 14.900 <small>ARS · pago único</small></div>
@@ -804,7 +651,7 @@
           <p class="sub">Todo incluido, todos los bonus</p>
           <ul>
             <li>185 páginas de material exclusivo</li>
-            <li>30+ actividades organizadas por edad y tema</li>
+            <li>36 actividades organizadas por edad y eje</li>
             <li>Tarjetas musicales ilustradas</li>
             <li>Juegos listos para imprimir</li>
             <li>Partituras ilustradas para principiantes</li>
@@ -837,7 +684,7 @@
           -->
           <!-- El href se arma solo con los IDs de variante (ver CHECKOUT en el script) -->
           <a class="btn btn-primary btn-block btn-lg" id="btnPremium" href="#">Quiero el Kit Completo</a>
-          <p class="secure">🔒 7 días de garantía incondicional</p>
+          <p class="secure">🔒 Pago seguro · Acceso inmediato · 7 días de garantía</p>
         </div>
       </div>
     </div>
@@ -857,63 +704,37 @@
     </div>
   </section>
 
-  <!-- ===================== CTA FINAL ===================== -->
-  <section id="cta-final" class="cta-final bg-warm">
-    <div class="container reveal">
-      <span class="eyebrow">⏰ La oferta puede terminar en cualquier momento</span>
-      <h2>La próxima clase, sesión o tarde en familia puede ser <span class="hl">la más especial de todas.</span></h2>
-      <p>Empezá hoy. Los chicos merecen música con intención, y vos merecés tranquilidad.</p>
-      <a class="btn btn-primary btn-lg" href="#oferta">🎵 Quiero trabajar la música con intención</a>
-      <p class="fine">Acceso inmediato • Pago 100% seguro • 7 días de garantía</p>
-    </div>
-  </section>
-
-  <!-- ===================== OBJECIONES ===================== -->
-  <section class="bg-cream">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Sin excusas</span>
-        <h2>Sacando todos los <span class="hl">"pero…"</span> del camino</h2>
-      </div>
-      <div class="grid grid-2">
-        <article class="card objecao reveal">
-          <h3>No tengo tiempo para planificar clases o sesiones.</h3>
-          <p>Por eso está LISTO. Lo abrís, lo imprimís y lo aplicás. Nada de preparar a último momento.</p>
-        </article>
-        <article class="card objecao reveal">
-          <h3>No soy músico ni sé leer partituras.</h3>
-          <p>No hace falta. Cada actividad trae instrucciones simples que cualquier adulto puede seguir: docente, terapeuta o familia.</p>
-        </article>
-        <article class="card objecao reveal">
-          <h3>Soy musicoterapeuta. ¿Me sirve para el trabajo clínico?</h3>
-          <p>Sí. Las actividades se adaptan a sesiones individuales y grupales, con objetivos de desarrollo bien definidos.</p>
-        </article>
-        <article class="card objecao reveal">
-          <h3>Soy mamá/papá sin formación docente. ¿Puedo usarlo en casa?</h3>
-          <p>Totalmente. Está pensado para la escuela, el consultorio y también para la alfombra del living. Indicado de 2 a 8 años.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== FAQ ===================== -->
-  <section id="faq" class="bg-cream" style="padding-top:0">
+  <section id="faq" class="bg-cream">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Preguntas frecuentes</span>
         <h2>Dudas <span class="hl">resueltas</span></h2>
       </div>
       <div class="faq reveal">
-        <details><summary>¿El material es digital o físico?</summary><p>Es 100% digital, en PDF de alta calidad. Lo imprimís todas las veces que quieras, en casa o en una imprenta.</p></details>
-        <details><summary>¿Para qué edades está indicado?</summary><p>Las actividades están pensadas para niños de 2 a 8 años, organizadas por edad y tema.</p></details>
-        <details><summary>¿Necesito saber música para usarlo?</summary><p>No. Cada actividad trae instrucciones paso a paso que cualquier adulto puede seguir.</p></details>
+        <details><summary>¿Necesito saber música o leer partituras?</summary><p>No. Cada actividad trae instrucciones paso a paso que cualquier docente puede seguir, aunque no sea profe de música.</p></details>
+        <details><summary>No tengo tiempo para planificar. ¿Me sirve igual?</summary><p>Por eso está listo: lo abrís, lo imprimís y lo aplicás. Cada actividad ya tiene su objetivo, su duración y su paso a paso.</p></details>
+        <details><summary>¿Para qué edades está indicado?</summary><p>Para nenes de 2 a 8 años. Las 36 actividades están organizadas en tres franjas: 2–3, 4–5 y 6–8 años.</p></details>
+        <details><summary>¿El material es digital o físico?</summary><p>Es 100% digital, en PDF de alta calidad. Lo imprimís todas las veces que quieras, en casa, en la escuela o en una imprenta.</p></details>
+        <details><summary>¿Cómo recibo el material?</summary><p>Apenas se confirma el pago, recibís por mail el link para descargar todos los archivos. Podés dar tu primera clase ese mismo día.</p></details>
         <details><summary>¿Por cuánto tiempo tengo acceso?</summary><p>Acceso de por vida, con todas las actualizaciones futuras incluidas sin costo adicional.</p></details>
         <details><summary>¿Y si no me gusta?</summary><p>Tenés 7 días de garantía incondicional. Mandás un mail y te devolvemos el 100% del dinero.</p></details>
-        <details><summary>¿Puedo usarlo en el consultorio de musicoterapia?</summary><p>Sí. Las actividades se adaptan a sesiones individuales y grupales, con objetivos claros de desarrollo.</p></details>
-        <details><summary>¿Cómo recibo el material?</summary><p>Apenas se confirma el pago, recibís por mail el link para descargar todos los archivos.</p></details>
+        <details><summary>¿Sirve también para musicoterapia o para usar en casa?</summary><p>Sí. Cada actividad incluye cómo adaptarla al aula, al consultorio y a casa.</p></details>
       </div>
     </div>
   </section>
+
+  <!-- ===================== CTA FINAL ===================== -->
+  <section id="cta-final" class="cta-final bg-warm">
+    <div class="container reveal">
+      <span class="eyebrow">⏰ El precio de hoy termina en <b class="countdown" data-countdown>--:--:--</b></span>
+      <h2>El lunes podés llegar a la sala <span class="hl">con la clase de música lista.</span></h2>
+      <p>36 actividades, 185 páginas y 3 bonus de regalo por $ 19.900, solo por hoy.</p>
+      <a class="btn btn-primary btn-lg" href="#oferta">🎵 Quiero el kit ahora</a>
+      <p class="fine">Acceso inmediato • Pago 100% seguro • 7 días de garantía</p>
+    </div>
+  </section>
+
 
   <footer>
     <b>Musicalización Encantada</b>
@@ -959,7 +780,7 @@
 
   <!-- Barra CTA fija (solo mobile) -->
   <div class="sticky-cta" id="stickyCta">
-    <div class="p"><small>Kit Completo + Bonus</small><b>$ 19.900</b></div>
+    <div class="p"><small>🔥 Solo hoy · <span class="countdown" data-countdown>--:--:--</span></small><b>$ 19.900</b></div>
     <a class="btn btn-primary" href="#oferta">Quiero el kit</a>
   </div>
 
@@ -1036,6 +857,23 @@
     };
     gallery.addEventListener('scroll', updateDots, { passive: true });
     updateDots();
+
+    // ---- Oferta del día: cuenta regresiva hasta las 23:59:59 de hoy (hora de Argentina) ----
+    (function () {
+      const DIA = 86400000, AR = -3 * 3600000;
+      const relojes = document.querySelectorAll('[data-countdown]');
+      const dos = (n) => String(n).padStart(2, '0');
+      const hoy = new Date().toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'America/Argentina/Buenos_Aires' }).replace(',', '');
+      document.querySelectorAll('[data-hoy]').forEach((el) => { el.textContent = hoy; });
+      const tick = () => {
+        const resta = DIA - (((Date.now() + AR) % DIA) + DIA) % DIA;
+        const seg = Math.floor(resta / 1000);
+        const txt = dos(Math.floor(seg / 3600)) + ':' + dos(Math.floor(seg / 60) % 60) + ':' + dos(seg % 60);
+        relojes.forEach((el) => { el.textContent = txt; });
+      };
+      tick();
+      setInterval(tick, 1000);
+    })();
 
     // ---- Checkout y order bumps ----
     // IDs de variante de Shopify (no los del producto). tienda: vacío = links relativos,
