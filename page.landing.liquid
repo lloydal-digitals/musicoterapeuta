@@ -452,7 +452,7 @@
             <span>Termina en <b class="countdown" data-countdown>--:--:--</b></span>
           </div>
           <div class="hero-price"><s>$ 49.900</s><b>$ 19.900</b><small>Kit completo + 3 bonus</small></div>
-          <a class="btn btn-primary btn-block" href="#oferta">Quiero el kit ahora</a>
+          <a class="btn btn-primary btn-block js-checkout" href="#oferta">Quiero el kit ahora</a>
         </div>
         <ul class="trust">
           <li>185 páginas</li>
@@ -523,7 +523,7 @@
         <div class="dots" id="dots" aria-hidden="true"></div>
       </div>
       <div class="section-cta reveal">
-        <a class="btn btn-primary btn-lg" href="#oferta">Quiero el kit por $ 19.900</a>
+        <a class="btn btn-primary btn-lg js-checkout" href="#oferta">Quiero el kit por $ 19.900</a>
       </div>
     </div>
   </section>
@@ -731,7 +731,7 @@
       <span class="eyebrow">⏰ El precio de hoy termina en <b class="countdown" data-countdown>--:--:--</b></span>
       <h2>El lunes podés llegar a la sala <span class="hl">con la clase de música lista.</span></h2>
       <p>36 actividades, 185 páginas y 3 bonus de regalo por $ 19.900, solo por hoy.</p>
-      <a class="btn btn-primary btn-lg" href="#oferta">🎵 Quiero el kit ahora</a>
+      <a class="btn btn-primary btn-lg js-checkout" href="#oferta">🎵 Quiero el kit ahora</a>
       <p class="fine">Acceso inmediato • Pago 100% seguro • 7 días de garantía</p>
     </div>
   </section>
@@ -779,10 +779,10 @@
     </div>
   </div>
 
-  <!-- Barra CTA fija (solo mobile) -->
+  <!-- Barra CTA fija (solo mobile). Los botones .js-checkout van directo al checkout del Premium -->
   <div class="sticky-cta" id="stickyCta">
     <div class="p"><small>🔥 Solo hoy · <span class="countdown" data-countdown>--:--:--</span></small><b>$ 19.900</b></div>
-    <a class="btn btn-primary" href="#oferta">Quiero el kit</a>
+    <a class="btn btn-primary js-checkout" href="#oferta">Quiero el kit</a>
   </div>
 
   <script>
@@ -899,6 +899,8 @@
       const extra = elegidos.reduce((t, k) => t + PRECIOS.bumps[k], 0);
       btnBasico.href = linkCarrito(conBumps([CHECKOUT.basico]));
       btnPremium.href = linkCarrito(conBumps([CHECKOUT.premium]));
+      // Botones con precio (hero, galería, barra mobile y cierre): directo al checkout del Premium
+      document.querySelectorAll('.js-checkout').forEach((a) => { a.href = btnPremium.getAttribute('href'); });
       upsellAccept.href = linkCarrito(conBumps([CHECKOUT.premium]), CHECKOUT.codigoUpsell);
       upsellAccept.textContent = `Quiero la versión completa por ${fmt(PRECIOS.premiumUpsell + extra)}`;
       document.querySelectorAll('.bump-sum').forEach((t) => {
